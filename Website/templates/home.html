@@ -1,952 +1,356 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BLEEDING EDGE | RedShift Aerospace</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        }
-
-        body {
-            background-color: #000;
-            color: #fff;
-            overflow-x: hidden;
-        }
-
-        .header {
-            background-color: #000;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #cc2f26;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .logo {
-            font-size: 18px;
-            font-weight: bold;
-            color: #cc2f26;
-        }
-
-        .nav-links {
-            display: flex;
-        }
-
-        .nav-links a {
-            color: #cc2f26;
-            text-decoration: none;
-            margin-left: 20px;
-            text-transform: uppercase;
-            font-size: 14px;
-            letter-spacing: 1px;
-        }
-
-        .nav-links a.active {
-            border-bottom: 2px solid #cc2f26;
-        }
-
-        .hero {
-            background-color: #000;
-            height: 50vh; /* Reduced from 70vh to shorten distance */
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .hero-image {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.6;
-            mix-blend-mode: multiply;
-        }
-
-        .hero-text {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-        }
-
-        .hero-title {
-            font-size: 120px;
-            font-weight: 900;
-            letter-spacing: 10px;
-            color: #cc2f26;
-            text-transform: uppercase;
-            line-height: 1;
-        }
-
-        .subtitle {
-            font-size: 16px;
-            letter-spacing: 5px;
-            color: #fff;
-            margin-top: 20px;
-            text-transform: uppercase;
-        }
-
-        .content {
-            padding: 30px 10%; /* Reduced from 50px to shorten distance */
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            grid-gap: 30px;
-        }
-
-        .content-box {
-            background-color: #000;
-            padding: 30px;
-            color: #ccc;
-            border: 1px solid #cc2f26;
-        }
-
-        .content-box h2 {
-            font-size: 24px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #cc2f26;
-        }
-
-        .content-box p {
-            line-height: 1.6;
-        }
-
-        .footer {
-            background-color: #000;
-            padding: 20px;
-            text-align: center;
-            border-top: 1px solid #cc2f26;
-        }
-
-        .barcode {
-            font-family: monospace;
-            font-size: 14px;
-            color: #cc2f26;
-            letter-spacing: -1px;
-        }
-
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 60px;
-            }
-            .content {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        #home-page, #projects-page, #about-page, #contact-page, #technical-page, #changelog-page {
-            display: none;
-        }
-
-        #home-page.active, #projects-page.active, #about-page.active, #contact-page.active, #technical-page.active, #changelog-page.active {
-            display: block;
-        }
-
-        .project-item {
-            background-color: #000;
-            border: 1px solid #cc2f26;
-            margin-bottom: 30px;
-            padding: 20px;
-        }
-
-        .project-title {
-            font-size: 32px;
-            color: #cc2f26;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-            letter-spacing: 3px;
-        }
-
-        .project-subtitle {
-            font-size: 16px;
-            color: #fff;
-            margin-bottom: 20px;
-            letter-spacing: 2px;
-        }
-
-        .project-description {
-            color: #ccc;
-            line-height: 1.6;
-        }
-
-        .project-meta {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-            font-size: 14px;
-            color: #cc2f26;
-        }
-
-        /* Team Member Cards */
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .team-member {
-            background-color: #111;
-            border: 1px solid #cc2f26;
-            overflow: hidden;
-            transition: transform 0.3s;
-        }
-
-        .team-member:hover {
-            transform: translateY(-5px);
-        }
-
-        .team-photo {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            filter: grayscale(100%) contrast(120%);
-            mix-blend-mode: luminosity;
-            border-bottom: 1px solid #cc2f26;
-        }
-
-        .team-info {
-            padding: 20px;
-        }
-
-        .team-name {
-            font-size: 24px;
-            color: #cc2f26;
-            text-transform: uppercase;
-            margin-bottom: 5px;
-            letter-spacing: 2px;
-        }
-
-        .team-position {
-            font-size: 14px;
-            color: #fff;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-            letter-spacing: 1px;
-        }
-
-        .team-bio {
-            color: #ccc;
-            font-size: 14px;
-            line-height: 1.6;
-        }
-
-        /* Contact Page */
-        .contact-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .contact-info {
-            background-color: #111;
-            border: 1px solid #cc2f26;
-            padding: 30px;
-            margin-bottom: 30px;
-        }
-
-        .contact-heading {
-            font-size: 28px;
-            color: #cc2f26;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .contact-text {
-            color: #ccc;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .social-link {
-            display: block;
-            width: 120px;
-            padding: 10px;
-            background-color: #cc2f26;
-            color: #000;
-            text-align: center;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-weight: bold;
-            letter-spacing: 1px;
-            transition: all 0.3s;
-        }
-
-        .social-link:hover {
-            background-color: #fff;
-            color: #000;
-        }
-
-        .contact-form {
-            background-color: #111;
-            border: 1px solid #cc2f26;
-            padding: 30px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-label {
-            display: block;
-            color: #cc2f26;
-            margin-bottom: 5px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .form-input, .form-textarea {
-            width: 100%;
-            padding: 10px;
-            background-color: #000;
-            border: 1px solid #333;
-            color: #fff;
-        }
-
-        .form-textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        .form-button {
-            display: inline-block;
-            padding: 10px 30px;
-            background-color: #cc2f26;
-            color: #000;
-            border: none;
-            text-transform: uppercase;
-            font-weight: bold;
-            letter-spacing: 2px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .form-button:hover {
-            background-color: #fff;
-        }
-
-        /* New Styles for TECHNICAL Section */
-        .tech-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .tech-file {
-            background-color: #0a0a0a;
-            border: 1px solid #cc2f26;
-            padding: 20px;
-            transition: transform 0.2s;
-        }
-
-        .tech-file:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 0 15px rgba(204, 47, 38, 0.3);
-        }
-
-        .file-icon {
-            width: 60px;
-            height: 60px;
-            margin: 0 auto 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #151515;
-            border: 1px solid #cc2f26;
-            font-size: 24px;
-            color: #cc2f26;
-        }
-
-        .file-name {
-            font-size: 18px;
-            color: #cc2f26;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-
-        .file-description {
-            font-size: 14px;
-            color: #aaa;
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
-
-        .file-meta {
-            font-size: 12px;
-            color: #666;
-            display: flex;
-            justify-content: space-between;
-            border-top: 1px solid #222;
-            padding-top: 10px;
-        }
-
-        .download-btn {
-            display: block;
-            width: 100%;
-            padding: 8px;
-            background-color: #1a1a1a;
-            color: #cc2f26;
-            border: 1px solid #cc2f26;
-            text-align: center;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 12px;
-            letter-spacing: 1px;
-            transition: all 0.3s;
-            margin-top: 15px;
-        }
-
-        .download-btn:hover {
-            background-color: #cc2f26;
-            color: #000;
-        }
-
-        /* New Styles for CHANGELOG Section */
-        .changelog-container {
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: #0a0a0a;
-            border: 1px solid #cc2f26;
-            padding: 30px;
-        }
-
-        .changelog-title {
-            font-size: 28px;
-            color: #cc2f26;
-            margin-bottom: 30px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            text-align: center;
-            border-bottom: 1px solid #cc2f26;
-            padding-bottom: 15px;
-        }
-
-        .changelog-entry {
-            margin-bottom: 30px;
-            border-left: 2px solid #cc2f26;
-            padding-left: 20px;
-            position: relative;
-        }
-
-        .changelog-entry:last-child {
-            margin-bottom: 0;
-        }
-
-        .changelog-entry:before {
-            content: '';
-            position: absolute;
-            width: 12px;
-            height: 12px;
-            background-color: #cc2f26;
-            border-radius: 50%;
-            left: -7px;
-            top: 0;
-        }
-
-        .changelog-date {
-            font-size: 18px;
-            color: #cc2f26;
-            margin-bottom: 10px;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
-
-        .changelog-list {
-            list-style-type: none;
-        }
-
-        .changelog-item {
-            margin-bottom: 8px;
-            color: #ccc;
-            position: relative;
-            padding-left: 15px;
-            line-height: 1.6;
-        }
-
-        .changelog-item:before {
-            content: '•';
-            position: absolute;
-            left: 0;
-            color: #cc2f26;
-        }
-
-        .changelog-label {
-            display: inline-block;
-            padding: 2px 8px;
-            font-size: 12px;
-            border-radius: 3px;
-            margin-right: 8px;
-            text-transform: uppercase;
-            font-weight: bold;
-        }
-
-        .label-added {
-            background-color: rgba(0, 128, 0, 0.2);
-            color: #4CAF50;
-            border: 1px solid #4CAF50;
-        }
-
-        .label-fixed {
-            background-color: rgba(0, 0, 255, 0.2);
-            color: #2196F3;
-            border: 1px solid #2196F3;
-        }
-
-        .label-updated {
-            background-color: rgba(255, 165, 0, 0.2);
-            color: #FF9800;
-            border: 1px solid #FF9800;
-        }
-
-        .label-removed {
-            background-color: rgba(255, 0, 0, 0.2);
-            color: #F44336;
-            border: 1px solid #F44336;
-        }
-    </style>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Show home page by default
-            document.getElementById('home-page').classList.add('active');
-
-            // Handle navigation
-            const navLinks = document.querySelectorAll('.nav-links a');
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const target = this.getAttribute('data-target');
-
-                    // Remove active class from all links
-                    navLinks.forEach(navLink => {
-                        navLink.classList.remove('active');
-                    });
-
-                    // Add active class to clicked link
-                    this.classList.add('active');
-
-                    // Hide all pages
-                    document.querySelectorAll('#home-page, #projects-page, #about-page, #contact-page, #technical-page, #changelog-page').forEach(page => {
-                        page.classList.remove('active');
-                    });
-
-                    // Show target page
-                    document.getElementById(target).classList.add('active');
-                });
-            });
-
-            // Set home link as active by default
-            document.querySelector('.nav-links a[data-target="home-page"]').classList.add('active');
-        });
-    </script>
+<meta charset="UTF-8">
+<title>RedShift Aerospace</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/avif" href="{{ url_for('static', filename='assets/images/iconita.avif') }}">
+
+<script>
+  document.documentElement.classList.add('nav-prep');
+</script>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/pages.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/contact.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/changelog.css') }}">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+
+<style>
+  body, body * { color: #fff !important; }
+  .blurred-bg {
+    background: rgba(0,0,0,0.45);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border-radius: 12px;
+    box-shadow: 0 16px 32px rgba(0,0,0,0.45);
+    padding: 32px 36px 32px 44px;
+    margin: 32px 0 0 0;
+  }
+  body.evolution-active .footer-brand img,
+  body.evolution-active .footer-brand p { display: none !important; }
+  .team-card h3 { font-size: 20px; }
+  .gallery-img { cursor: pointer; transition: transform 0.2s ease; }
+  .gallery-img:hover { transform: scale(1.05); }
+
+  .lightbox {
+    display: none; position: fixed; z-index: 10000; padding-top: 50px;
+    left: 0; top: 0; width: 100%; height: 100%; overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8); animation: fadeIn 0.3s;
+  }
+  .lightbox.active { display: flex; justify-content: center; align-items: center; padding-top: 0; }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  .lightbox-content { max-width: 90%; max-height: 90vh; object-fit: contain; animation: zoomIn 0.3s; }
+  @keyframes zoomIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+  .lightbox-close { position: absolute; top: 20px; right: 30px; color: #fff; font-size: 40px; font-weight: bold; cursor: pointer; }
+  .lightbox-close:hover { color: #e63946; }
+  .lightbox-nav { position: absolute; top: 50%; transform: translateY(-50%); color: #fff; font-size: 30px; cursor: pointer; padding: 10px 15px; user-select: none; }
+  .lightbox-prev { left: 20px; }
+  .lightbox-next { right: 20px; }
+  .lightbox-nav:hover { color: #e63946; }
+
+  .tech-tab-btn { background: #111; color: #888 !important; border: 1px solid #222; }
+  .tech-tab-btn:hover { background: #1a1a1a; color: #fff !important; }
+  .tech-tab-btn.active-tab { background: #fff; color: #000 !important; border-color: #fff; }
+
+  .captcha-container {
+    display: flex; align-items: center; background: #0d0d0d; border: 1px solid #222; padding: 12px 16px; border-radius: 6px; margin-bottom: 15px; width: fit-content; gap: 12px;
+  }
+  .captcha-checkbox { width: 20px; height: 20px; cursor: pointer; accent-color: #EC1F24; }
+
+  @media (max-width: 768px) {
+    .tech-viewer-container { flex-direction: column !important; padding: 15px !important; gap: 15px !important; }
+    .viewer-window { width: 100% !important; height: 350px !important; flex: none !important; }
+    .viewer-controls { width: 100% !important; max-width: 100% !important; min-width: 100% !important; flex: none !important; }
+    .project-details { flex-direction: column !important; gap: 15px !important; }
+    .project-details > div { width: 100% !important; max-width: 100% !important; }
+    .header-inner { flex-wrap: wrap; gap: 10px; }
+    #recruitment-heading { white-space: normal !important; font-size: 20px !important; }
+  }
+</style>
 </head>
 <body>
-    <div class="header">
-        <div class="logo">© MMXXI RedShift Aerospace</div>
-        <div class="nav-links">
-            <a href="#" data-target="home-page">Home</a>
-            <a href="#" data-target="projects-page">Projects</a>
-            <a href="#" data-target="about-page">About</a>
-            <a href="#" data-target="technical-page">Technical</a>
-            <a href="#" data-target="changelog-page">Changelog</a>
-            <a href="#" data-target="contact-page">Contact</a>
-        </div>
+
+<header class="header">
+  <div class="header-inner" style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+
+    <div style="display: flex; align-items: center; gap: 25px;">
+      <div class="logo">
+        <a href="#" class="logo-link" onclick="showPage('home'); return false;">
+          <img src="{{ url_for('static', filename='assets/images/logo.avif') }}" alt="RedShift Aerospace">
+        </a>
+      </div>
+      {% if statut_visible %}
+      <a href="{{ url_for('static', filename=statut_pdf_path) }}" target="_blank" rel="noopener" style="text-decoration: none; font-weight: 700; font-size: 15px; letter-spacing: 0.5px; border: 1px solid rgba(255,255,255,0.2); padding: 6px 14px; border-radius: 4px; background: rgba(255,255,255,0.05); transition: background 0.2s;">Legal Statuts</a>
+      {% endif %}
     </div>
 
-    <div id="home-page">
-        <div class="hero">
-            <img src="/api/placeholder/1200/800" alt="placeholder" class="hero-image" />
-            <div class="hero-text">
-                <div class="hero-title">BLEEDING EDGE</div>
-                <div class="subtitle">RedShift Aerospace · AGAINST THE ODDS</div>
-            </div>
-        </div>
+    <nav class="nav-links">
+      <a onclick="showPage('home')">Home</a>
+      <a onclick="showPage('projects')">Projects</a>
+      <a onclick="showPage('technical')">Technical</a>
+      <a onclick="showPage('about')">Team</a>
+      <a onclick="showPage('changelog')">Development Timeline</a>
+      <a onclick="showPage('contact')">Contact</a>
+      <a class="lang-switch" href="ro/index.html">RO</a>
+    </nav>
+  </div>
+</header>
 
-        <div class="content">
-            <div class="content-box">
-                <h2>WE ARE REDSHIFT</h2>
-                <p>Student-driven startup out of Cluj-Napoca, Romania. We fully intend to bring the newest talent to the international playing field - starting today. </p>
-            </div>
-            <div class="content-box">
-                <h2>OUR PAST</h2>
-                <p>Initially concieved as a student team for the European CanSat competitions in 2023, we gradually took on more and more talented individuals until we grew into what we are today. Restless. And ready.</p>
-            </div>
-            <div class="content-box">
-                <h2>OUR FUTURE</h2>
-                <p>Incredibly volatile. Yet the potential is infinite. Our aspirations reach far - but we have yet to see the edges of our limitations. And until we hit a ceiling, we'll keep going. And after we do - we'll break through it.</p>
-            </div>
-        </div>
+<main class="pages">
+
+  <section id="home" class="page active">
+    <section class="home-hero">
+      <div class="hero-content"><div class="hero-text"><h1>Where Technology<br>Meets Ambition</h1></div></div>
+    </section>
+
+    <div class="blurred-bg">
+      <h1>RedShift Aerospace</h1>
+      <p>RedShift Aero is an initiative led by students from the Faculty of Physics, Babeș-Bolyai University in Cluj-Napoca, providing a space dedicated to academic excellence and engineering development. Our team transforms a passion for science into tangible projects, participating in international scientific competitions and developing innovative technologies such as CanSat platforms and experimental space vehicles. Through these experiences, we prepare future engineers to push the boundaries of knowledge and contribute actively to space exploration.</p>
     </div>
 
-    <div id="projects-page">
-        <div class="hero">
-            <img src="/api/placeholder/1200/800" alt="placeholder" class="hero-image" />
-            <div class="hero-text">
-                <div class="hero-title">PROJECTS</div>
-                <div class="subtitle">RedShift Aerospace · INNOVATION</div>
-            </div>
+    <section class="founders-section" style="margin-top:36px;">
+      <div class="blurred-bg">
+        <h2 style="color:#e63946; margin-bottom:10px;">Message from the Founders</h2>
+        <p>RedShift Aerospace was born from a shared dream: to create a space where curiosity, ambition, and technical skill could come together to achieve something greater than ourselves. We believe that true progress is made when people are empowered to experiment, to fail, and to try again—always reaching for new heights. Our journey has been one of learning, resilience, and teamwork, and we are proud to see our vision take shape through the dedication of every member. We invite you to join us, to challenge boundaries, and to help shape the future of aerospace together.<br><span style="font-style:italic; color:#bbb;">— The Founders</span></p>
+      </div>
+    </section>
+
+    <section class="parteneri" style="margin-top:36px;">
+      <div class="blurred-bg">
+        <h2 style="color:#457b9d; margin-bottom:18px;">Partners/Sponsors</h2>
+        <div style="display:flex; flex-wrap:wrap; gap:48px; align-items:center; justify-content:center; margin-bottom:18px;">
+          <div style="text-align:center;"><img src="{{ url_for('static', filename='assets/Sponsori/Rospin.avif') }}" alt="Rospin" style="height:70px; display:block; margin:0 auto 8px auto;"><div>Rospin</div></div>
+          <div style="text-align:center;"><img src="{{ url_for('static', filename='assets/Sponsori/UBBFizica.avif') }}" alt="UBB Physics" style="height:70px; display:block; margin:0 auto 8px auto;"><div>UBB Physics</div></div>
+          <div style="text-align:center;"><img src="{{ url_for('static', filename='assets/Sponsori/ASFUBB.avif') }}" alt="ASF UBB" style="height:70px; display:block; margin:0 auto 8px auto;"><div>ASF UBB</div></div>
+          <div style="text-align:center;"><img src="{{ url_for('static', filename='assets/Sponsori/carfilogo.avif') }}" alt="Carfil" style="height:70px; display:block; margin:0 auto 8px auto;"><div>Carfil</div></div>
+          <div style="text-align:center;"><img src="{{ url_for('static', filename='assets/Sponsori/Microcip.avif') }}" alt="Microchip" style="height:70px; display:block; margin:0 auto 8px auto;"><div>Microchip</div></div>
         </div>
+      </div>
+    </section>
 
-        <div class="content" style="grid-template-columns: 1fr;">
-            <div class="project-item">
-                <div class="project-title">CANSAT</div>
-                <div class="project-subtitle">SATELLITE DEVELOPMENT AND CONSTRUCTION</div>
-                <div class="project-description">
-                    <p>The birth of our team, in 2023, revisited in 2024. Throughout, we built the foundations that would go on to represent the net sum of RedShift Aerospace today.
-                        Out of 8 teams, RedShift Aerospace was able to secure the fourth in 2023, and second in 2024 on national playing field. Our past design documentation can be found in TECHNICAL section.
-                    </p>
-                </div>
-                <div class="project-meta">
-                    <span>ACTIVE YEARS: 2023, 2024</span>
-                    <span>STATUS: COMPLETED</span>
-                </div>
-            </div>
-
-            <div class="project-item">
-                <div class="project-title">EuRoC</div>
-                <div class="project-subtitle">CHALLENGE WITHOUT LIMITS</div>
-                <div class="project-description">
-                    <p>With the assistance of the ITIM and Ion Ursu physics research laboratories we fully intend to participate in the 2025 edition of the European Rocketry Competition, awaiting only preselection standard.
-                        New infrastructure, members, and backing gives us the unbridled confidence of solid performance - cementing the foundations of a future unexplored industry in Romania.
-                        Our team is ready, Portugal.
-                        Are you?
-                    </p>
-                </div>
-                <div class="project-meta">
-                    <span>EST. 09.10.2025</span>
-                    <span>STATUS: AWAITING APPROVAL</span>
-                </div>
-            </div>
-
-            <div class="project-item">
-                <div class="project-title">NGO</div>
-                <div class="project-subtitle">A FIRST STEP TO SPACE</div>
-                <div class="project-description">
-                    <p>An NGO - also known as a Non-Governmental Organization - is the first of many planned steps we intend to take to guarantee a foothold in the aerospace sector.
-                        If all goes well, we would be able to not only access sponsor backing, but also EU backed grants through NextGenerationEU and Romanian backed grants
-                        through the START-UP NATION and Electric Up programs. Not the first to try, but perhaps the first to succeed.
-                    </p>
-                </div>
-                <div class="project-meta">
-                    <span>EST. 2025-2026</span>
-                    <span>STATUS: RESEARCH</span>
-                </div>
-            </div>
+    <section class="gallery" style="margin-top:36px;">
+      <div class="blurred-bg">
+        <h2 style="color:#e63946; margin-bottom:18px;">Gallery</h2>
+        <div class="gallery-grid" id="gallery-grid">
+          <img src="{{ url_for('static', filename='assets/Galerie/DSCF5552.avif') }}" alt="DSCF5552" class="gallery-img">
+          <img src="{{ url_for('static', filename='assets/Galerie/DSCF6788.avif') }}" alt="DSCF6788" class="gallery-img">
+          <img src="{{ url_for('static', filename='assets/Galerie/DSCF6809.avif') }}" alt="DSCF6809" class="gallery-img">
+          <img src="{{ url_for('static', filename='assets/Galerie/_FVN6988 (1).avif') }}" alt="FVN6988" class="gallery-img">
+          <img src="{{ url_for('static', filename='assets/Galerie/_FVN7125 (3).avif') }}" alt="FVN7125" class="gallery-img">
+          <img src="{{ url_for('static', filename='assets/Galerie/_FVN8202.avif') }}" alt="FVN8202" class="gallery-img">
+          <img src="{{ url_for('static', filename='assets/Galerie/_FVN8215.avif') }}" alt="FVN8215" class="gallery-img">
+          <img src="{{ url_for('static', filename='assets/Galerie/_FVN8247.avif') }}" alt="FVN8247" class="gallery-img">
+          <img src="{{ url_for('static', filename='assets/Galerie/_FVN8289.avif') }}" alt="FVN8289" class="gallery-img">
+          <img src="{{ url_for('static', filename='assets/Galerie/_FVN8309.avif') }}" alt="FVN8309" class="gallery-img">
+          <img src="{{ url_for('static', filename='assets/Galerie/IMG-20250208-WA0041.avif') }}" alt="IMG-20250208-WA0041" class="gallery-img">
         </div>
+      </div>
+    </section>
+  </section>
+
+  <section id="projects" class="page">
+    <div class="projects-grid">
+      {% for p in projects %}
+      <div class="project-card {{ p.class_attr }}">
+        <h2>{{ p.title }}</h2>
+        {% if p.image %}
+        <div class="project-details" style="display: flex; gap: 24px; align-items: flex-start; width: 100%;">
+          <div class="project-text" style="flex: 1;"><p>{% if p.content|length > 320 %}{{ p.content[:320] }}<span class="readmore-cut"></span>{{ p.content[320:] }}{% else %}{{ p.content }}{% endif %}</p></div>
+          <div style="flex: 0 0 auto; max-width: 440px; width: 40%;"><img src="{{ url_for('static', filename=p.image) }}" alt="{{ p.title }}" class="pilot-side-img" style="width: 100%; height: auto; border-radius: 8px; display: block; box-shadow: 0 4px 12px rgba(0,0,0,0.3);"></div>
+        </div>
+        {% else %}
+        <p>{% if p.content|length > 320 %}{{ p.content[:320] }}<span class="readmore-cut"></span>{{ p.content[320:] }}{% else %}{{ p.content }}{% endif %}</p>
+        {% endif %}
+      </div>
+      {% endfor %}
     </div>
+  </section>
 
-    <div id="about-page">
-        <div class="hero">
-            <img src="/api/placeholder/1200/800" alt="placeholder" class="hero-image" />
-            <div class="hero-text">
-                <div class="hero-title">TEAM</div>
-                <div class="subtitle">RedShift Aerospace · UNDIVIDED</div>
+  <section id="technical" class="page" style="width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; box-sizing: border-box; padding: 0 40px;">
+    <div class="tech-docs-stack" style="width: 100%; max-width: 1400px; margin: 0 auto; box-sizing: border-box;">
+      {% for grp_key, grp_title in tech_groups.items() %}
+      <div id="{{ grp_key }}-pdf-list" class="tech-docs" style="margin-bottom: 50px; width: 100%;">
+        <h3 class="tech-doc-heading" style="font-size: 20px; color: #e63946; margin-bottom: 16px; font-weight: 700;">{{ grp_title }}</h3>
+        <div class="tech-viewer-container" style="display: flex; gap: 30px; background: rgba(0,0,0,0.45); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); padding: 30px; border-radius: 12px; border: 1px solid #222; align-items: stretch; width: 100%; box-sizing: border-box; box-shadow: 0 16px 32px rgba(0,0,0,0.45);">
+          <div class="viewer-window" style="flex: 2.8; background: #151515; border-radius: 8px; border: 1px solid #333; overflow: hidden; height: 580px; box-shadow: inset 0 0 20px rgba(0,0,0,0.8);">
+            {% if technical[grp_key] and technical[grp_key]|length > 0 %}
+              <iframe id="iframe-{{ grp_key }}" src="{{ url_for('static', filename='assets/pdfs/' + technical[grp_key][0].path) }}" style="width: 100%; height: 100%; border: none;"></iframe>
+            {% else %}
+              <div style="display:flex; justify-content:center; align-items:center; height:100%; color:#555; font-family: monospace;">No schematics uploaded for this project yet</div>
+            {% endif %}
+          </div>
+          <div class="viewer-controls" style="flex: 1; display: flex; flex-direction: column; gap: 20px; min-width: 320px; max-width: 400px; box-sizing: border-box;">
+            <div class="tab-button-group" style="display: flex; flex-wrap: wrap; gap: 10px; background: #0a0a0a; padding: 8px; border-radius: 6px; border: 1px solid #222; width: 100%; box-sizing: border-box;">
+              {% for doc in technical[grp_key] %}
+                <button class="tech-tab-btn grp-btn-{{ grp_key }} {% if loop.first %}active-tab{% endif %}" onclick="switchTechnicalFile('{{ grp_key }}', '{{ url_for('static', filename='assets/pdfs/' + doc.path) }}', '{{ doc.name }}', this)" style="padding: 10px 16px; border: none; border-radius: 4px; font-weight: bold; font-size: 13px; cursor: pointer; transition: all 0.2s; flex: 1; min-width: 75px; text-align: center;">{{ doc.badge }}</button>
+              {% endfor %}
             </div>
-        </div>
-
-        <div class="content">
-            <div class="team-grid">
-                <div class="team-member">
-                    <img src="/api/placeholder/400/300" alt="Toma Lucas-Dan" class="team-photo" />
-                    <div class="team-info">
-                        <h3 class="team-name">Toma Lucas-Dan</h3>
-                        <div class="team-position">Founder, Head of Propulsion Research</div>
-                        <p class="team-bio">Leading RedShift Aerospace with a vision to bring a dream to his country. Backed by incredible people, he doesn't intend to stop any time soon.</p>
-                    </div>
-                </div>
-
-                <div class="team-member">
-                    <img src="/api/placeholder/400/300" alt="Dinu Gabriel Teodor" class="team-photo" />
-                    <div class="team-info">
-                        <h3 class="team-name">Dinu Gabriel Teodor</h3>
-                        <div class="team-position">Co-Founder, Head of Rocket Body Design</div>
-                        <p class="team-bio">A man of his own mind, and a character of principle, Teodor brings the necessary drive and determination to spearhead our Rocket Body Design sector.</p>
-                    </div>
-                </div>
-
-                <div class="team-member">
-                    <img src="/api/placeholder/400/300" alt="Pintilei Dragoș Corneliu" class="team-photo" />
-                    <div class="team-info">
-                        <h3 class="team-name">Pintilei Dragoș Corneliu</h3>
-                        <div class="team-position">Head of Electronics Design</div>
-                        <p class="team-bio">Leading our research initiatives on the electrical front, Dragoș continues to prove himself daily to be among the most resilient people this country has to offer. </p>
-                    </div>
-                </div>
-
-                <div class="team-member">
-                    <img src="/api/placeholder/400/300" alt="Ardelean Catalin" class="team-photo" />
-                    <div class="team-info">
-                        <h3 class="team-name">Ardelean Catalin</h3>
-                        <div class="team-position">Technical Engineer</div>
-                        <p class="team-bio">A man of many talents, Catalin remains the embodiment of an indispensible man - calm, professional, and always present when needed. </p>
-                    </div>
-                </div>
-
-                <div class="team-member">
-                    <img src="/api/placeholder/400/300" alt="Lorem ipsum" class="team-photo" />
-                    <div class="team-info">
-                        <h3 class="team-name">Lorem ipsum</h3>
-                        <div class="team-position">Lorem ipsum</div>
-                        <p class="team-bio">Unfortunately, we're still hashing out privacy concerns within our team. We'll get back with more information as soon as we're done</p>
-                    </div>
-                </div>
+            <div class="doc-info-box" style="background: #0a0a0a; padding: 24px; border-radius: 8px; border: 1px solid #1a1a1a; flex: 1; display: flex; flex-direction: column; box-sizing: border-box;">
+              <h4 id="doc-title-{{ grp_key }}" style="color: #fff; font-size: 18px; font-weight: 600; margin-bottom: 12px; border-bottom: 1px solid #222; padding-bottom: 8px;">{% if technical[grp_key] and technical[grp_key]|length > 0 %}{{ technical[grp_key][0].name }}{% else %}No Schematic Selected{% endif %}</h4>
+              <p style="color: #bbb; font-size: 14px; line-height: 1.6; margin-bottom: 20px;">Technical asset blueprint vector model.</p>
+              <button class="doc-btn" onclick="window.open(document.getElementById('iframe-{{ grp_key }}') ? document.getElementById('iframe-{{ grp_key }}').src : '#', '_blank')" style="width: 100%; background: #457b9d; color: #fff; padding: 14px; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; margin-top: auto; transition: background 0.2s;">Open Fullscreen / Download Options</button>
             </div>
+          </div>
         </div>
+      </div>
+      {% endfor %}
     </div>
+  </section>
 
-    <!-- New TECHNICAL Section -->
-    <div id="technical-page">
-        <div class="hero">
-            <img src="/api/placeholder/1200/800" alt="placeholder" class="hero-image" />
-            <div class="hero-text">
-                <div class="hero-title">TECHNICAL</div>
-                <div class="subtitle">RedShift Aerospace · SCHEMATICS</div>
+  <section id="about" class="page">
+    <div class="team-container">
+      {% for cat_key, cat_title in [('mentors', 'Mentors'), ('leaders', 'Team Leaders'), ('members', 'Active Members')] %}
+      <div class="team-group">
+        <h2>{{ cat_title }}</h2>
+        <ul class="team-list {{ cat_key }}">
+          {% for m in team[cat_key] %}
+          <li class="team-card" style="position: relative; flex-direction: column; align-items: center; padding: 24px 20px;">
+            <div style="flex: 0 0 auto; display:flex; justify-content:center;"><img src="{{ url_for('static', filename=m.img) }}" alt="{{ m.name }}" style="width: 180px; height: 180px; border-radius: 8px; object-fit: cover;"></div>
+            <div class="profile" style="text-align: center; width: 100%; padding: 16px 0 0 0;">
+              <h3>{{ m.name }}</h3>
+              <p class="role" style="font-weight: bold; margin-bottom: 4px; color: #e63946;">{{ m.role }}</p>
+              <p class="bio" style="font-size:14px; color:#bbb;">{{ m.bio }}</p>
             </div>
-        </div>
-
-        <div class="content">
-            <div class="tech-grid">
-                <div class="tech-file">
-                    <div class="file-icon">PDF</div>
-                    <h3 class="file-name">CANSAT_2023_INITIAL_PDR.pdf</h3>
-                    <p class="file-description">Initial pitch for the 2023 CanSat competition. Eliminated before the final round, never made a final revision in the 2023 edition. Concept expanded upon in 2024.</p>
-                    <div class="file-meta">
-                        <span>3.7 MB</span>
-                        <span>20.11.2023</span>
-                    </div>
-                    <a href="/download/PDR2023first.pdf" class="download-btn">DOWNLOAD</a>
-                </div>
-
-                <div class="tech-file">
-                    <div class="file-icon">PDF</div>
-                    <h3 class="file-name">CANSAT_2024_INITIAL_PDR.pdf</h3>
-                    <p class="file-description">Compounded design from 2023, researched and brought into the 2024 CanSat competition. Complete design and schematics.</p>
-                    <div class="file-meta">
-                        <span>4.1 MB</span>
-                        <span>15.01.2024</span>
-                    </div>
-                    <a href="/download/PDR2024first.pdf" class="download-btn">DOWNLOAD</a>
-                </div>
-
-                <div class="tech-file">
-                    <div class="file-icon">PDF</div>
-                    <h3 class="file-name">CANSAT_2024_FINAL_PDR.pdf</h3>
-                    <p class="file-description">Final technical report for the 2024 CanSat competition. Documents all design improvements, and details the complete model overhaul that was required to fit mission parameters.</p>
-                    <div class="file-meta">
-                        <span>6.8 MB</span>
-                        <span>30.03.2024</span>
-                    </div>
-                    <a href="/download/PDR2024final.pdf" class="download-btn">DOWNLOAD</a>
-                </div>
-
-                <div class="tech-file">
-                    <div class="file-icon">PDF</div>
-                    <h3 class="file-name">DESIGN_SCHEMATICS.pdf</h3>
-                    <p class="file-description">Preliminary rocket exterior design schematics for EuRoC 2025. Tested under Rocket Flight Data</p>
-                    <div class="file-meta">
-                        <span>8.3 MB</span>
-                        <span>12.01.2025</span>
-                    </div>
-                    <a href="/download/SolidWorks Model.pdf" class="download-btn">DOWNLOAD</a>
-                </div>
-
-                <div class="tech-file">
-                    <div class="file-icon">PDF</div>
-                    <h3 class="file-name">THEORETICAL_CALC.pdf</h3>
-                    <p class="file-description">Theoretical Flight Calculations to ensure validity of flight model integrity. Compiled for EuRoC 2025.</p>
-                    <div class="file-meta">
-                        <span>5.5 MB</span>
-                        <span>27.02.2025</span>
-                    </div>
-                    <a href="/download/Rocket propulsion and trajectory model.pdf" class="download-btn">DOWNLOAD</a>
-                </div>
-
-                <div class="tech-file">
-                    <div class="file-icon">PDF</div>
-                    <h3 class="file-name">ROCKET_FLIGHT_DATA.pdf</h3>
-                    <p class="file-description">Rocket Test Data under OpenRocket and RASAero II for our EuRoC 2025 submission. Further simulation data pending admittance.</p>
-                    <div class="file-meta">
-                        <span>8.3 MB</span>
-                        <span>12.01.2025</span>
-                    </div>
-                    <a href="/download/Rocket Simulation.pdf" class="download-btn">DOWNLOAD</a>
-                </div>
-
-                <div class="tech-file">
-                    <div class="file-icon">PDF</div>
-                    <h3 class="file-name">PROPULSION_RESEARCH.pdf</h3>
-                    <p class="file-description">Research documentation and simulation data on current propulsion initiatives for EuRoC 2025.</p>
-                    <div class="file-meta">
-                        <span>5.5 MB</span>
-                        <span>27.02.2025</span>
-                    </div>
-                    <a href="/download/Preliminary Propulsion Report.pdf" class="download-btn">DOWNLOAD</a>
-                </div>
-            </div>
-        </div>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endfor %}
     </div>
+  </section>
 
-    <!-- New CHANGELOG Section -->
-    <div id="changelog-page">
-        <div class="hero">
-            <img src="/api/placeholder/1200/800" alt="placeholder" class="hero-image" />
-            <div class="hero-text">
-                <div class="hero-title">CHANGELOG</div>
-                <div class="subtitle">RedShift Aerospace · PROGRESS</div>
-            </div>
+  <section id="changelog" class="page">
+    <div class="changelog-inner">
+      <div class="timeline">
+        <h1 class="timeline-title">Development Timeline</h1>
+        {% for entry in timeline %}
+        <div class="timeline-entry">
+          <div class="date">{{ entry.date }}</div>
+          <ul>{% for ev in entry.events %}<li data-type="{{ ev.type }}"><span class="tag {{ ev.type }}">{{ ev.type | upper }}</span> {{ ev.text }}</li>{% endfor %}</ul>
         </div>
-
-        <div class="content" style="grid-template-columns: 1fr;">
-            <div class="changelog-container">
-                <h2 class="changelog-title">DEVELOPMENT TIMELINE</h2>
-
-                <div class="changelog-entry">
-                    <div class="changelog-date">03.15.2025</div>
-                    <ul class="changelog-list">
-                        <li class="changelog-item"><span class="changelog-label label-added">ADDED</span> EuRoC 2025 preliminary design documentation complete, awaiting committee review</li>
-                        <li class="changelog-item"><span class="changelog-label label-updated">UPDATED</span> Propulsion research with new findings from ITIM lab collaboration</li>
-                        <li class="changelog-item"><span class="changelog-label label-added">ADDED</span> Three new team members to electronics and materials engineering divisions</li>
-                    </ul>
-                </div>
-
-                <div class="changelog-entry">
-                    <div class="changelog-date">02.27.2025</div>
-                    <ul class="changelog-list">
-                        <li class="changelog-item"><span class="changelog-label label-added">ADDED</span> Completed propulsion research documentation with simulations and theoretical models</li>
-                        <li class="changelog-item"><span class="changelog-label label-updated">UPDATED</span> Website with technical documentation section</li>
-                        <li class="changelog-item"><span class="changelog-label label-fixed">FIXED</span> Corrections to EuRoC application materials after technical review</li>
-                    </ul>
-                </div>
-
-                <div class="changelog-entry">
-                    <div class="changelog-date">01.12.2025</div>
-                    <ul class="changelog-list">
-                        <li class="changelog-item"><span class="changelog-label label-added">ADDED</span> EuRoC 2025 preliminary design documentation drafted</li>
-                        <li class="changelog-item"><span class="changelog-label label-updated">UPDATED</span> Partnership agreement with Ion Ursu physics research laboratory finalized</li>
-                        <li class="changelog-item"><span class="changelog-label label-added">ADDED</span> Initial research into solid rocket motor design and manufacturing</li>
-                    </ul>
-                </div>
-
-                <div class="changelog-entry">
-                    <div class="changelog-date">11.30.2024</div>
-                    <ul class="changelog-list">
-                        <li class="changelog-item"><span class="changelog-label label-added">ADDED</span> Decision to participate in EuRoC 2025 competition</li>
-                        <li class="changelog-item"><span class="changelog-label label-updated">UPDATED</span> Team structure with new research divisions</li>
-                        <li class="changelog-item"><span class="changelog-label label-fixed">FIXED</span> Final revisions to CanSat 2024 documentation archive</li>
-                    </ul>
-                </div>
-
-                <div class="changelog-entry">
-                    <div class="changelog-date">03.30.2024</div>
-                    <ul class="changelog-list">
-                        <li class="changelog-item"><span class="changelog-label label-added">ADDED</span> CanSat 2024 competition completed - 2nd place finish</li>
-                        <li class="changelog-item"><span class="changelog-label label-updated">UPDATED</span> Final technical report and documentation submitted</li>
-                        <li class="changelog-item"><span class="changelog-label label-added">ADDED</span> Partnership discussions with ITIM laboratory initiated</li>
-                    </ul>
-                </div>
-
-                <div class="changelog-entry">
-                    <div class="changelog-date">02.15.2024</div>
-                    <ul class="changelog-list">
-                        <li class="changelog-item"><span class="changelog-label label-added">ADDED</span> Completed electrical schematics for CanSat 2024 entry</li>
-                        <li class="changelog-item"><span class="changelog-label label-updated">UPDATED</span> Sensor integration with optimized power management</li>
-                        <li class="changelog-item"><span class="changelog-label label-fixed">FIXED</span> Communication system reliability issues from 2023 design</li>
-                    </ul>
-                </div>
-
-                <div class="changelog-entry">
-                    <div class="changelog-date">11.22.2023</div>
-                    <ul class="changelog-list">
-                        <li class="changelog-item"><span class="changelog-label label-added">ADDED</span> Final technical report submitted for CanSat 2023</li>
-                        <li class="changelog-item"><span class="changelog-label label-updated">UPDATED</span> Team decision to participate in CanSat 2024</li>
-                        <li class="changelog-item"><span class="changelog-label label-added">ADDED</span> Initial design improvements based on 2023 performance analysis</li>
-                    </ul>
-                </div>
-
-                <div class="changelog-entry">
-                    <div class="changelog-date">11.03.2023</div>
-                    <ul class="changelog-list">
-                        <li class="changelog-item"><span class="changelog-label label-added">ADDED</span> Electrical schematics for CanSat 2023 competition finalized</li>
-                        <li class="changelog-item"><span class="changelog-label label-updated">UPDATED</span> Team formed as RedShift Aerospace</li>
-                        <li class="changelog-item"><span class="changelog-label label-added">ADDED</span> CanSat 2023 competition completed - 4th place finish</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+        {% endfor %}
+      </div>
     </div>
+  </section>
 
-    <div id="contact-page">
-        <div class="hero">
-            <img src="/api/placeholder/1200/800" alt="placeholder" class="hero-image" />
-            <div class="hero-text">
-                <div class="hero-title">CONTACT</div>
-                <div class="subtitle">RedShift Aerospace · CONNECT</div>
-            </div>
+  <section id="contact" class="page">
+    <div class="contact-container">
+      <div class="contact-info">
+        <h1>Contact</h1>
+        <p class="contact-intro">Interested in collaborating, research, or innovation? Reach out and let’s build something ambitious together.</p>
+        <div class="contact-details">
+          <div><span><u>Email</u></span><a href="mailto:contact@redshift.com">contact@redshift.com</a></div>
+          <div><span><u>Location</u></span><p>Cluj-Napoca, Romania · Europe</p></div>
+          <div>
+            <span><u>Social</u></span>
+            <p class="social-links" style="margin-top:10px; margin-bottom: 25px; display: flex; gap: 12px; align-items: center;">
+              {% for s in socials %}
+              <a href="{{ s.url }}" target="_blank" rel="noopener" title="{{ s.platform }}">
+                <img src="{{ url_for('static', filename='assets/images/' + s.icon) }}" alt="{{ s.platform }}" width="22" height="22">
+              </a>
+              {% endfor %}
+            </p>
+          </div>
+
+          <div style="border-top: 2px solid #EC1F24; padding-top: 24px; margin-top: 25px; width: 100%;">
+            <span id="recruitment-heading" style="font-weight: 900; color: #EC1F24 !important; font-size: 26px; display: block; margin-bottom: 8px; text-transform: uppercase; letter-spacing: -0.2px; white-space: nowrap;">Interested in joining our team?</span>
+            <p style="font-size: 15px; color: #eee !important; margin-bottom: 16px; line-height: 1.5; font-weight: 500;">We are always looking for passionate students to join our aerospace divisions.</p>
+            <a href="{{ recruitment_link }}" target="_blank" rel="noopener" style="display: inline-block; background: #EC1F24; color: #fff !important; padding: 12px 24px; border-radius: 6px; font-weight: bold; text-decoration: none; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 4px 15px rgba(236, 31, 36, 0.4); transition: transform 0.2s;">Fill Recruitment Form</a>
+          </div>
         </div>
+      </div>
 
-        <div class="content" style="grid-template-columns: 1fr;">
-            <div class="contact-container">
-                <div class="contact-info">
-                    <h2 class="contact-heading">Get In Touch</h2>
-                    <p class="contact-text">Interested in our aerospace innovations or potential collaborations? We're always looking to connect with like-minded individuals and organizations pushing the boundaries of what's possible.</p>
-                    <p class="contact-text">Our team is available to discuss projects, partnerships, or answer any questions about our technology and research initiatives.</p>
+      <div class="contact-form">
+        <form id="contact-form-en" action="https://formsubmit.co/contact@redshift.com" method="POST" onsubmit="return validateForm();">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="text" name="name" placeholder="Your name" required>
+          <input type="email" name="email" placeholder="Your email" required>
+          <textarea name="message" placeholder="Your message" required></textarea>
 
-                    <h2 class="contact-heading">Connect With Us</h2>
-                    <div class="social-links">
-                        <a href="https://www.instagram.com/redshiftaero" target="_blank" class="social-link">Instagram</a>
-                        <a href="https://www.facebook.com/profile.php?id=61574144896177" target="_blank" class="social-link">Facebook</a>
-                        <a href="https://www.linkedin.com/company/redshift-aerospace-industries/" target="_blank" class="social-link">LinkedIn</a>
-                        <a href="https://linktr.ee/redshiftaero" target="_blank" class="social-link">Linktree</a>
-                        <a href="mailto:admin@redshiftaero.com" target="_blank" class="social-link">eMail</a>
-                    </div>
-                </div>
+          <div class="captcha-container">
+            <input type="checkbox" id="not-robot" class="captcha-checkbox" required>
+            <label for="not-robot" style="font-size: 14px; color: #aaa; cursor: pointer; user-select: none;">I am not a robot</label>
+          </div>
 
-                <div class="contact-form">
-                    <h2 class="contact-heading">Send Us A Message</h2>
-                    <form action="/submit-contact" method="POST">
-                        <div class="form-group">
-                            <label class="form-label">Name</label>
-                            <input type="text" name="name" class="form-input" placeholder="Your Name">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Email</label>
-                            <input type="email" name="email" class="form-input" placeholder="Your Email">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Subject</label>
-                            <input type="text" name="subject" class="form-input" placeholder="Message Subject">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Message</label>
-                            <textarea name="message" class="form-textarea" placeholder="Your Message"></textarea>
-                        </div>
-                        <button type="submit" class="form-button">Send Message</button>
-                    </form>
-                </div>
-            </div>
-        </div>
+          <button type="submit" style="background: #EC1F24 !important; box-shadow: 0 4px 15px rgba(236, 31, 36, 0.4) !important; border: none; font-weight: bold; cursor: pointer; transition: transform 0.2s, background 0.2s;">Send message</button>
+        </form>
+      </div>
     </div>
+  </section>
+</main>
 
-    <div class="footer">
-        <div class="barcode">7 252727 75070 8</div>
-        <div class="subtitle">RedShift Aerospace · AGAINST THE ODDS</div>
-        <div class="japanese-text">人類は神の天国 te渴望する</div>
+<div id="lightbox" class="lightbox">
+  <span class="lightbox-close">&times;</span><img class="lightbox-content" id="lightbox-img" src="" alt=""><span class="lightbox-nav lightbox-prev">&#10094;</span><span class="lightbox-nav lightbox-next">&#10095;</span>
+</div>
+
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-brand">
+      <img src="{{ url_for('static', filename='assets/images/logo.avif') }}" alt="RedShift Logo" style="width: 300px; height: auto;">
+      <p>RedShift Aerospace is an independent aerospace research initiative, focused on engineering, experimentation and applied innovation.</p>
     </div>
+    <div class="footer-nav"><a data-page="home">Home</a><a data-page="projects">Projects</a><a data-page="about">About</a></div>
+    <div class="footer-nav"><a data-page="technical">Technical</a><a data-page="changelog">Development Timeline</a></div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-links"><a href="regulation.html">Regulation</a></div>
+    <div class="footer-copy">© <a href="/admin" style="color:inherit; text-decoration:none;">RedShift Aerospace</a> 2026. All Rights Reserved.</div>
+  </div>
+</footer>
+
+<script src="{{ url_for('static', filename='js/navigation.js') }}"></script>
+<script src="{{ url_for('static', filename='js/changelog.js') }}"></script>
+
+<script>
+function validateForm() {
+  const checkbox = document.getElementById('not-robot');
+  if (!checkbox.checked) { alert("Please verify that you are not a robot."); return false; }
+  return true;
+}
+
+function switchTechnicalFile(groupKey, filePath, docName, buttonElement) {
+  const iframe = document.getElementById('iframe-' + groupKey);
+  const titleText = document.getElementById('doc-title-' + groupKey);
+  if (iframe) iframe.src = filePath;
+  if (titleText) titleText.textContent = docName;
+  const buttons = document.querySelectorAll('.grp-btn-' + groupKey);
+  buttons.forEach(btn => btn.classList.remove('active-tab'));
+  buttonElement.classList.add('active-tab');
+}
+
+(function() {
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const galleryImages = document.querySelectorAll('#gallery-grid .gallery-img');
+  const lightboxClose = document.querySelector('.lightbox-close');
+  const lightboxPrev = document.querySelector('.lightbox-prev');
+  const lightboxNext = document.querySelector('.lightbox-next');
+  let currentImageIndex = 0;
+  const imageSources = Array.from(galleryImages).map(img => ({ src: img.src, alt: img.alt }));
+
+  function openLightbox(index) {
+    currentImageIndex = index;
+    lightboxImg.src = imageSources[index].src;
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() { lightbox.classList.remove('active'); document.body.style.overflow = 'auto'; }
+  function showPrevImage() { currentImageIndex = (currentImageIndex - 1 + imageSources.length) % imageSources.length; lightboxImg.src = imageSources[currentImageIndex].src; }
+  function showNextImage() { currentImageIndex = (currentImageIndex + 1) % imageSources.length; lightboxImg.src = imageSources[currentImageIndex].src; }
+
+  galleryImages.forEach((img, idx) => img.addEventListener('click', () => openLightbox(idx)));
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightboxPrev.addEventListener('click', showPrevImage);
+  lightboxNext.addEventListener('click', showNextImage);
+  lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+})();
+</script>
 </body>
 </html>

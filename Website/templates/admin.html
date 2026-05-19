@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>RedShift Aerospace — Admin Dashboard</title>
+  <link rel="stylesheet" href="/static/css/reset.css">
+  <style>
+    body { background: #000; color: #fff; font-family: 'Inter', sans-serif; padding: 40px; }
+    h1 { color: #e63946; margin-bottom: 5px; font-size: 28px; font-weight: 900; }
+    h2 { color: #e63946; margin-bottom: 20px; font-size: 22px; font-weight: 700; border-bottom: 2px solid #e63946; padding-bottom: 8px; }
+    h3 { color: #fff; margin-bottom: 15px; font-size: 18px; font-weight: 600; }
+    h4 { color: #457b9d; margin: 0; font-size: 16px; font-weight: 600; }
+
+    .section-box {
+      background: #111; padding: 30px; border: 1px solid #222; margin-bottom: 40px; border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    }
+
+    input, select, textarea { padding: 10px 14px; background: #000; color: #fff; border: 1px solid #333; border-radius: 4px; font-family: inherit; font-size: 14px; }
+    input:focus, select:focus, textarea:focus { border-color: #457b9d; outline: none; }
+
+    table { width: 100%; margin-bottom: 20px; background: #0a0a0a; border-collapse: collapse; border: 1px solid #1a1a1a; }
+    th { background: #151515; color: #888; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; padding: 12px; text-align: left; border-bottom: 2px solid #222; }
+    td { padding: 16px 12px; text-align: left; border-bottom: 1px solid #1a1a1a; vertical-align: top; }
+
+    button, input[type="submit"] { color: #fff; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 14px; transition: background 0.2s ease; }
+    .btn-add { background: #457b9d; }
+    .btn-add:hover { background: #1d3557; }
+    .btn-delete { background: #e63946; padding: 6px 12px; font-size: 13px; }
+    .btn-delete:hover { background: #b70918; }
+
+    .btn-order { background: #222; border: 1px solid #444; padding: 4px 8px; font-size: 14px; margin-right: 2px; }
+    .btn-order:hover { background: #e63946; }
+
+    .edit-row-container {
+      background: #161616;
+      padding: 25px;
+      margin-top: 10px;
+      border-radius: 6px;
+      border: 1px solid #457b9d;
+      width: 100%;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>RedShift Aerospace Database Dashboard</h1>
+    <a href="/" style="color: #bbb; text-decoration: underline; font-size: 14px;">← Open live website</a>
+  </header>
+  <br><br>
+
+  <div id="upload-hub-sec" class="section-box" style="border: 1px solid #457b9d;">
+    <h2 style="color: #457b9d; border-color: #457b9d;">🚀 Centralized File Upload Hub</h2>
+    <p style="font-size: 13px; color: #bbb; margin-bottom: 15px;">Use this widget to upload files directly into your server directories. After uploading, copy the generated path string into the inputs below.</p>
+
+    <form action="/admin/upload_asset" method="POST" enctype="multipart/form-data" target="_blank" style="display: flex; gap: 15px; align-items: center; background: #0a0a0a; padding: 15px; border-radius: 6px;">
+      <input type="hidden" name="password" value="{{ password }}">
+      <div style="display: flex; flex-direction: column; gap: 5px;">
+        <label style="font-size: 11px; color: #888;">Destination Subfolder:</label>
+        <select name="target_folder" required>
+          <option value="assets/Membri">Team Profiles (assets/Membri)</option>
+          <option value="assets/Mentori">Mentors Profiles (assets/Mentori)</option>
+          <option value="assets/images">General Graphics (assets/images)</option>
+          <option value="assets/Galerie">Gallery Items (assets/Galerie)</option>
+          <option value="assets/pdfs">Base PDFs folder (assets/pdfs)</option>
+          <option value="assets/pdfs/EuRoC 2025">EuRoC 2025 PDFs</option>
+          <option value="assets/pdfs/EuRoC 2026">EuRoC 2026 PDFs</option>
+        </select>
+      </div>
+      <input type="file" name="file_asset" required style="flex: 1;">
+      <button type="submit" class="btn-add">Upload Asset</button>
+    </form>
+  </div>
+
+  <div id="statut-config-sec" class="section-box" style="border: 1px solid #e63946;">
+    <h2 style="color: #e63946; border-color: #e63946;">📜 Legal Statuts Configuration</h2>
+    <form action="/admin/statut/update" method="POST" style="display: flex; flex-direction: column; gap: 15px; width: 100%;">
+      <input type="hidden" name="password" value="{{ password }}">
+
+      <div style="display: flex; align-items: center; gap: 12px; background: #0a0a0a; padding: 15px; border-radius: 6px; border: 1px solid #222;">
+        <input type="checkbox" id="statut_visible" name="statut_visible" value="true" {% if statut_visible %}checked{% endif %} style="width: 20px; height: 20px; cursor: pointer; accent-color: #e63946;">
+        <label for="statut_visible" style="font-size: 15px; font-weight: bold; color: #eee; cursor: pointer; user-select: none;">Show "Legal Statuts" link button in public website navbar</label>
+      </div>
+
+      <div style="display: flex; gap: 15px; align-items: flex-end; width: 100%;">
+        <div style="flex: 1; display: flex; flex-direction: column; gap: 5px;">
+          <label>Statut Document Storage Path (ex: assets/pdfs/statut.pdf):</label>
+          <input type="text" name="statut_pdf_path" value="{{ statut_pdf_path }}" required style="width: 100%; margin: 0;">
+        </div>
+        <button type="submit" class="btn-add" style="background: #e63946;">Save Statut Changes</button>
+      </div>
+    </form>
+  </div>
+
+  <div id="recruitment-config-sec" class="section-box" style="border: 1px solid #9b5de5;">
+    <h2>📋 Team Recruitment Settings</h2>
+    <form action="/admin/recruitment/update" method="POST" style="display: flex; gap: 15px; align-items: flex-end; width: 100%;">
+      <input type="hidden" name="password" value="{{ password }}">
+      <div style="flex: 1; display: flex; flex-direction: column; gap: 5px;">
+        <label>External Forms Recruitment Link:</label>
+        <input type="text" name="recruitment_link" value="{{ recruitment_link }}" required style="width: 100%; margin: 0;">
+      </div>
+      <button type="submit" class="btn-add" style="background: #9b5de5;">Update Link</button>
+    </form>
+  </div>
+
+  <div id="socials-config-sec" class="section-box" style="border: 1px solid #38b000;">
+    <h2 style="color: #38b000; border-color: #38b000;">🌐 Social Media Channels Manager</h2>
+    <p style="font-size: 13px; color: #bbb; margin-bottom: 15px;">Add or remove active links shown in the Contact section on the homepage. Icons are loaded from the <code>static/assets/images/</code> folder.</p>
+
+    <form action="/admin/socials/add" method="POST" style="display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 25px; background: #0a0a0a; padding: 15px; border-radius: 6px;">
+      <input type="hidden" name="password" value="{{ password }}">
+      <input type="text" name="platform" placeholder="Platform Name (e.g. YouTube)" required style="flex: 1;">
+      <input type="text" name="url" placeholder="Full Profile URL" required style="flex: 2;">
+      <input type="text" name="icon" placeholder="Icon File Name (e.g. youtube.svg)" required style="flex: 1; font-family: monospace;">
+      <button type="submit" class="btn-add" style="background: #38b000;">Add Link</button>
+    </form>
+
+    <h3>Active Icons Matrix</h3>
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 20%;">Platform</th>
+          <th>Target URL</th>
+          <th style="width: 20%;">Icon Asset File</th>
+          <th style="text-align: right; width: 15%;">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for s in socials %}
+        <tr>
+          <td><b style="color: #fff;">{{ s.platform }}</b></td>
+          <td style="color: #aaa; font-size: 13px;"><a href="{{ s.url }}" target="_blank" style="color: #457b9d;">{{ s.url }}</a></td>
+          <td style="font-family: monospace; font-size: 13px; color: #888;">{{ s.icon }}</td>
+          <td style="text-align: right;">
+            <form action="/admin/socials/delete/{{ s.id }}" method="POST" style="margin:0;" onsubmit="return confirm('Remove this social network icon?');">
+              <input type="hidden" name="password" value="{{ password }}">
+              <button type="submit" class="btn-delete">Remove</button>
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <div id="projects-sec" class="section-box">
+    <h2>1. Projects Grid Controller</h2>
+    <form action="/admin/projects/add" method="POST" style="display: flex; flex-direction: column; gap: 12px; max-width: 600px; margin-bottom: 25px;">
+      <input type="hidden" name="password" value="{{ password }}">
+      <input type="text" name="title" placeholder="Project Core Heading" required>
+      <input type="text" name="class_attr" placeholder="Optional CSS Class Attribute">
+      <input type="text" name="image" placeholder="Image File Path inside static">
+      <textarea name="content" placeholder="Full descriptive contents here..." rows="4" required></textarea>
+      <button type="submit" class="btn-add" style="align-self: flex-start;">Deploy Project Module</button>
+    </form>
+
+    <h3>Active Repositories</h3>
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 10%;">Order</th>
+          <th style="width: 15%;">Title</th>
+          <th>Text Content Snippet</th>
+          <th style="text-align: right; width: 15%;">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for p in projects %}
+        <tr>
+          <td>
+            <form action="/admin/reorder/projects/{{ p.id }}/up" method="POST" style="display:inline;">
+              <input type="hidden" name="password" value="{{ password }}"><button type="submit" class="btn-order">↑</button>
+            </form>
+            <form action="/admin/reorder/projects/{{ p.id }}/down" method="POST" style="display:inline;">
+              <input type="hidden" name="password" value="{{ password }}"><button type="submit" class="btn-order">↓</button>
+            </form>
+          </td>
+          <td><b>{{ p.title }}</b></td>
+          <td style="color: #aaa; font-size: 13px;">{{ p.content[:120] }}...</td>
+          <td style="text-align: right;">
+            <button type="button" onclick="toggleView('proj-edit-{{ p.id }}')" class="btn-order" style="background: #333;">Edit</button>
+            <form action="/admin/projects/delete/{{ p.id }}" method="POST" style="display: inline;" onsubmit="return confirm('Remove project permanently?');">
+              <input type="hidden" name="password" value="{{ password }}"><button type="submit" class="btn-delete">Delete</button>
+            </form>
+          </td>
+        </tr>
+        <tr id="proj-edit-{{ p.id }}" style="display: none;">
+          <td colspan="4">
+            <div class="edit-row-container">
+              <h5 style="color: #457b9d; margin-bottom: 10px; font-weight: bold;">Edit Module: {{ p.title }}</h5>
+              <form action="/admin/projects/edit/{{ p.id }}" method="POST" style="display: flex; flex-direction: column; gap: 12px; width: 100%;">
+                <input type="hidden" name="password" value="{{ password }}">
+                <div style="display: flex; gap: 15px;">
+                  <input type="text" name="title" value="{{ p.title }}" required style="flex: 1;">
+                  <input type="text" name="class_attr" value="{{ p.class_attr }}" style="flex: 1;">
+                  <input type="text" name="image" value="{{ p.image }}" style="flex: 1;">
+                </div>
+                <textarea name="content" rows="6" required style="width: 100%;">{{ p.content }}</textarea>
+                <button type="submit" class="btn-add" style="background: #4CAF50; align-self: flex-start;">Save Project</button>
+              </form>
+            </div>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <div id="tech-sec" class="section-box">
+    <h2>2. Technical Documentation &amp; Schematics</h2>
+    <div style="background: #151515; padding: 20px; margin-bottom: 25px; border-radius: 6px; border: 1px dashed #e63946;">
+      <h3>+ Create New Technical Project Category</h3><br>
+      <form action="/admin/technical/add_group" method="POST" style="display: flex; gap: 12px; width: 100%;">
+        <input type="hidden" name="password" value="{{ password }}">
+        <input type="text" name="group_title" placeholder="Project Name" required style="flex: 2;">
+        <input type="text" name="group_key" placeholder="Unique Key Id" required style="flex: 1; font-family: monospace;">
+        <button type="submit" class="btn-add" style="background: #e63946;">Create Category</button>
+      </form>
+    </div>
+
+    <div style="background: #151515; padding: 20px; margin-bottom: 25px; border-radius: 6px; border: 1px dashed #457b9d;">
+      <h3>+ Upload Blueprint to Category</h3><br>
+      <form action="/admin/technical/add" method="POST" style="display: flex; flex-wrap: nowrap; gap: 12px; width: 100%; align-items: center;">
+        <input type="hidden" name="password" value="{{ password }}">
+        <select name="group" style="min-width: 180px;">
+          {% for g_key, g_title in tech_groups.items() %}
+            <option value="{{ g_key }}">{{ g_title }}</option>
+          {% endfor %}
+        </select>
+        <input type="text" name="name" placeholder="Document Display Name" required style="flex: 2;">
+        <input type="text" name="badge" placeholder="Badge" value="PDF" style="width: 100px;">
+        <input type="text" name="path" placeholder="File storage path" required style="flex: 3;">
+        <button type="submit" class="btn-add">Inject Schematic</button>
+      </form>
+    </div>
+
+    {% for grp, title in tech_groups.items() %}
+      <div id="layout-{{ grp }}" style="display: flex; justify-content: space-between; align-items: center; margin-top: 25px; margin-bottom: 5px; border-bottom: 1px solid #222; padding-bottom: 5px;">
+        <h4 style="color: #457b9d; font-weight: bold;">{{ title }} Layout</h4>
+        <form action="/admin/technical/delete_group/{{ grp }}" method="POST" onsubmit="return confirm('Delete category?');" style="margin: 0;">
+          <input type="hidden" name="password" value="{{ password }}">
+          <button type="submit" class="btn-delete" style="padding: 4px 8px; font-size: 11px; background: #b70918;">✕ Delete Category</button>
+        </form>
+      </div>
+
+      <table>
+        <tbody>
+          {% if technical[grp] %}
+            {% for d in technical[grp] %}
+            <tr>
+              <td style="width: 10%;">
+                <form action="/admin/reorder/{{ grp }}/{{ d.id }}/up" method="POST" style="display:inline;">
+                  <input type="hidden" name="password" value="{{ password }}"><button type="submit" class="btn-order">↑</button>
+                </form>
+                <form action="/admin/reorder/{{ grp }}/{{ d.id }}/down" method="POST" style="display:inline;">
+                  <input type="hidden" name="password" value="{{ password }}"><button type="submit" class="btn-order">↓</button>
+                </form>
+              </td>
+              <td style="width: 20%;"><span style="background: #333; padding: 2px 6px; font-size: 11px; border-radius: 3px; font-weight: bold; color: #e63946; margin-right: 8px;">{{ d.badge }}</span> <b>{{ d.name }}</b></td>
+              <td style="font-family: monospace; font-size: 12px; color: #666;">{{ d.path }}</td>
+              <td style="text-align: right; width: 15%;">
+                <button type="button" onclick="toggleView('doc-edit-{{ d.id }}')" class="btn-order" style="background: #333;">Edit</button>
+                <form action="/admin/technical/delete/{{ grp }}/{{ d.id }}" method="POST" style="display:inline;">
+                  <input type="hidden" name="password" value="{{ password }}"><button type="submit" class="btn-delete">Delete</button>
+                </form>
+              </td>
+            </tr>
+            <tr id="doc-edit-{{ d.id }}" style="display: none;">
+              <td colspan="4">
+                <div class="edit-row-container">
+                  <form action="/admin/technical/edit/{{ grp }}/{{ d.id }}" method="POST" style="display: flex; gap: 15px; width: 100%; align-items: center;">
+                    <input type="hidden" name="password" value="{{ password }}">
+                    <input type="text" name="name" value="{{ d.name }}" required style="flex: 2;">
+                    <input type="text" name="badge" value="{{ d.badge }}" required style="width: 100px;">
+                    <input type="text" name="path" value="{{ d.path }}" required style="flex: 3;">
+                    <button type="submit" class="btn-add" style="background: #4CAF50; padding: 10px 15px;">Update</button>
+                  </form>
+                </div>
+              </td>
+            </tr>
+            {% endfor %}
+          {% endif %}
+        </tbody>
+      </table>
+    {% endfor %}
+  </div>
+
+  <div id="team-sec" class="section-box">
+    <h2>3. Team Roster Management</h2>
+    <div style="background: #151515; padding: 20px; margin-bottom: 30px; border-radius: 6px; border: 1px dashed #457b9d;">
+      <h3>+ Add New Team Member</h3>
+      <form action="/admin/team/add" method="POST" style="display: flex; flex-wrap: wrap; gap: 15px;">
+        <input type="hidden" name="password" value="{{ password }}">
+        <select name="category" style="min-width: 150px;">
+          <option value="mentors">Mentor</option>
+          <option value="leaders">Team Leader</option>
+          <option value="members">Active Member</option>
+        </select>
+        <input type="text" name="name" placeholder="Full Name" required style="flex: 1; min-width: 200px;">
+        <input type="text" name="role" placeholder="Role (ex: Propulsion Lead)" style="flex: 1; min-width: 200px;">
+        <input type="text" name="bio" placeholder="Bio info" style="flex: 2; min-width: 250px;">
+        <input type="text" name="img" placeholder="Photo Path" style="flex: 1; min-width: 200px;">
+        <input type="text" name="linkedin" placeholder="LinkedIn URL" style="flex: 1; min-width: 200px;">
+        <button type="submit" class="btn-add">Add Member</button>
+      </form>
+    </div>
+
+    <h3>Current Roster</h3>
+    {% for cat_list, cat_title in [('mentors', 'Mentors'), ('leaders', 'Team Leaders'), ('members', 'Active Members')] %}
+      <h4 style="margin-top: 20px; margin-bottom: 10px;">{{ cat_title }}</h4>
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 10%;">Order</th>
+            <th style="width: 25%;">Identity &amp; Function</th>
+            <th>Biography Notes</th>
+            <th style="text-align: right; width: 15%;">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for m in team[cat_list] %}
+          <tr>
+            <td>
+              <form action="/admin/reorder/{{ cat_list }}/{{ m.id }}/up" method="POST" style="display:inline;">
+                <input type="hidden" name="password" value="{{ password }}"><button type="submit" class="btn-order">↑</button>
+              </form>
+              <form action="/admin/reorder/{{ cat_list }}/{{ m.id }}/down" method="POST" style="display:inline;">
+                <input type="hidden" name="password" value="{{ password }}"><button type="submit" class="btn-order">↓</button>
+              </form>
+            </td>
+            <td><b>{{ m.name }}</b> <span style="color: #e63946;">[{{ m.role }}]</span></td>
+            <td style="color: #aaa; font-size: 13px;">{{ m.bio[:120] }}...</td>
+            <td style="text-align: right;">
+              <button type="button" onclick="toggleView('team-edit-{{ m.id }}')" class="btn-order" style="background: #333;">Edit</button>
+              <form action="/admin/team/delete/{{ cat_list }}/{{ m.id }}" method="POST" style="display: inline;" onsubmit="return confirm('Remove member?');">
+                <input type="hidden" name="password" value="{{ password }}"><button type="submit" class="btn-delete">Delete</button>
+              </form>
+            </td>
+          </tr>
+          <tr id="team-edit-{{ m.id }}" style="display: none;">
+            <td colspan="4">
+              <div class="edit-row-container">
+                <form action="/admin/team/edit/{{ cat_list }}/{{ m.id }}" method="POST" style="display: flex; flex-direction: column; gap: 10px; width: 100%;">
+                  <input type="hidden" name="password" value="{{ password }}">
+                  <div style="display: flex; gap: 15px; width: 100%;">
+                    <select name="new_category" style="flex: 1;">
+                      <option value="mentors" {% if cat_list == 'mentors' %}selected{% endif %}>Mentor</option>
+                      <option value="leaders" {% if cat_list == 'leaders' %}selected{% endif %}>Team Leader</option>
+                      <option value="members" {% if cat_list == 'members' %}selected{% endif %}>Active Member</option>
+                    </select>
+                    <input type="text" name="name" value="{{ m.name }}" required style="flex: 2;">
+                    <input type="text" name="role" value="{{ m.role }}" style="flex: 2;">
+                  </div>
+                  <div style="display: flex; gap: 15px; width: 100%;">
+                    <input type="text" name="bio" value="{{ m.bio }}" style="flex: 3;">
+                    <input type="text" name="img" value="{{ m.img }}" style="flex: 1;">
+                    <input type="text" name="linkedin" value="{{ m.linkedin }}" style="flex: 1;">
+                  </div>
+                  <button type="submit" class="btn-add" style="background: #4CAF50; align-self: flex-start;">Save Profile</button>
+                </form>
+              </div>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% endfor %}
+  </div>
+
+  <div id="timeline-sec" class="section-box">
+    <h2>4. Development Timeline (Evolution Log)</h2>
+    <form action="/admin/timeline/add" method="POST" style="display: flex; flex-direction: column; gap: 12px; max-width: 600px; margin-bottom: 25px;">
+      <input type="hidden" name="password" value="{{ password }}">
+      <div style="display: flex; gap: 15px;">
+        <input type="text" name="date" placeholder="Date (MM.DD.YYYY)" required style="flex:1;">
+        <select name="event_type">
+          <option value="added">ADDED</option>
+          <option value="updated">UPDATED</option>
+          <option value="fixed">FIXED</option>
+        </select>
+      </div>
+      <input type="text" name="image" placeholder="Image Path (optional)">
+      <textarea name="event_text" placeholder="Event milestone logs..." rows="2" required></textarea>
+      <button type="submit" class="btn-add" style="align-self: flex-start;">Publish Milestone</button>
+    </form>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 10%;">Order</th>
+          <th style="width: 15%;">Calendar Date</th>
+          <th>Linked Sub-Events List</th>
+          <th style="text-align: right; width: 15%;">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for entry in timeline %}
+        <tr>
+          <td>
+            <form action="/admin/reorder/timeline/{{ entry.id }}/up" method="POST" style="display:inline;">
+              <input type="hidden" name="password" value="{{ password }}"><button type="submit" class="btn-order">↑</button>
+            </form>
+            <form action="/admin/reorder/timeline/{{ entry.id }}/down" method="POST" style="display:inline;">
+              <input type="hidden" name="password" value="{{ password }}"><button type="submit" class="btn-order">↓</button>
+            </form>
+          </td>
+          <td><b>{{ entry.date }}</b></td>
+          <td>
+            <ul style="margin: 0; padding-left: 15px; list-style-type: square; line-height: 1.4;">
+              {% for ev in entry.events %}
+                <li>
+                  <span style="color: #EC1F24; font-weight: bold; font-size: 12px;">[{{ ev.type | upper }}]</span>
+                  <span style="color: #eee;">{{ ev.text }}</span>
+                </li>
+              {% endfor %}
+            </ul>
+          </td>
+          <td style="text-align: right;">
+            <form action="/admin/timeline/delete/{{ entry.id }}" method="POST">
+              <input type="hidden" name="password" value="{{ password }}"><button type="submit" class="btn-delete">Delete</button>
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    function toggleView(id) {
+      var el = document.getElementById(id);
+      el.style.display = (el.style.display === 'none') ? 'table-row' : 'none';
+    }
+  </script>
+</body>
+</html>

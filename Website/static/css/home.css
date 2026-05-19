@@ -1,0 +1,94 @@
+.home-hero {
+  
+
+  display: flex;
+  align-items: flex-start;   /* 🔑 asta mută sus */
+  justify-content: center;
+
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+
+.hero-content {
+  width: 100%;
+  max-width: 1400px;
+
+  display: grid;
+  grid-template-columns: 1fr; /* single column since mascot removed */
+  align-items: center;
+  gap: 0;
+  padding: 0 24px;           /* small side padding for narrow viewports */
+}
+.hero-text {
+  order: 1;
+  width: 100%;
+  text-align: center;
+}
+
+/* mascot styles no longer needed */
+
+
+
+
+@media (max-width: 900px) {
+  .home-hero {
+    padding: 60px 18px 56px;
+  }
+
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    text-align: center;
+    justify-items: center;
+  }
+
+  .hero-text h1 {
+    font-size: 36px;
+    line-height: 1.12;
+    max-width: 90%;
+  }
+
+  .hero-text p {
+    font-size: 16px;
+  }
+
+}
+
+/* Home text card spacing */
+#home .blurred-bg {
+  margin-top: 48px;   /* more space below hero */
+  padding: 48px 52px 48px 44px; /* slightly larger padding inside cards */
+}
+
+/* gallery layout */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;  /* more breathing between images */
+}
+.gallery-grid img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+/* Text */
+.hero-text h1 {
+  font-family: 'Inter', sans-serif; /* use Inter for hero heading too */
+  font-size: 64px;
+  font-weight: 900; /* extra bold for blocky appearance */
+  line-height: 1.1;
+  max-width: 900px;
+  margin: 0 auto;
+
+  text-transform: uppercase;
+  letter-spacing: 0.08em; /* more spacing between letters */
+
+  background: none;
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+}
+

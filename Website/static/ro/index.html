@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<title>RedShift Aerospace | Română</title>
+<link rel="icon" type="image/avif" href="../assets/images/iconita.avif">
+
+<script>
+  // Ascunde paginile până se activează secțiunea corectă
+  document.documentElement.classList.add('nav-prep');
+</script>
+
+<link rel="stylesheet" href="../css/reset.css">
+<link rel="stylesheet" href="../css/navbar.css">
+<link rel="stylesheet" href="../css/pages.css">
+<link rel="stylesheet" href="../css/footer.css">
+<link rel="stylesheet" href="../css/home.css">
+<link rel="stylesheet" href="../css/contact.css">
+<link rel="stylesheet" href="../css/changelog.css">
+
+<!-- Google Font: Inter -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+
+<style>
+  body, body * {
+    color: #fff !important;
+  }
+  .blurred-bg {
+    background: rgba(0,0,0,0.45);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border-radius: 12px;
+    box-shadow: 0 16px 32px rgba(0,0,0,0.45);
+    padding: 32px 36px 32px 44px;
+    margin: 32px 0 0 0;
+  }
+  body.evolution-active .footer-brand img,
+  body.evolution-active .footer-brand p {
+    display: none !important;
+  }
+  .team-card h3 {
+    font-size: 20px;
+  }
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-inner">
+
+    <div class="logo">
+      <a href="#" class="logo-link" onclick="showPage('home'); return false;" title="Acasă">
+        <img src="../assets/images/logo.avif" alt="RedShift Aerospace">
+      </a>
+    </div>
+
+    <nav class="nav-links">
+      <a onclick="showPage('home')">Acasă</a>
+      <a onclick="showPage('projects')">Proiecte</a>
+      <a onclick="showPage('technical')">Tehnic</a>
+      <a onclick="showPage('about')">Echipă</a>
+      <a onclick="showPage('changelog')">Cronologia dezvoltării</a>
+      <a onclick="showPage('contact')">Contact</a>
+      <a class="lang-switch" href="../index.html" title="Vezi versiunea în engleză">EN</a>
+    </nav>
+
+  </div>
+</header>
+
+<main class="pages">
+
+<section id="home" class="page active">
+  <section class="home-hero">
+    <div class="hero-content">
+
+      <div class="hero-text">
+        <h1>
+          Unde tehnologia<br>
+          întâlnește ambiția
+        </h1>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="blurred-bg">
+    <h1>RedShift Aerospace</h1>
+    <p>RedShift Aero este o inițiativă condusă de studenți ai Facultății de Fizică, Universitatea Babeș-Bolyai din Cluj-Napoca, un spațiu dedicat excelenței academice și dezvoltării inginerești. Transformăm pasiunea pentru știință în proiecte concrete, participăm la competiții internaționale și dezvoltăm tehnologii precum platforme CanSat și vehicule spațiale experimentale. Prin aceste experiențe pregătim viitori ingineri care să împingă limitele cunoașterii și să contribuie activ la explorarea spațiului.</p>
+  </div>
+
+  <section class="founders-section" style="margin-top:36px;">
+    <div class="blurred-bg">
+      <h2 style="color:#e63946; margin-bottom:10px;">Mesaj de la fondatori</h2>
+      <p>RedShift Aerospace s-a născut dintr-un vis comun: să creăm un loc unde curiozitatea, ambiția și abilitățile tehnice se întâlnesc pentru a realiza ceva mai mare decât noi. Credem că progresul real se face când oamenii sunt încurajați să experimenteze, să greșească și să încerce din nou—mereu spre altitudine. Călătoria noastră a însemnat învățare, reziliență și lucru în echipă, iar viziunea prinde contur prin dedicarea fiecărui membru. Te invităm să ni te alături, să depășim limitele și să modelăm împreună viitorul aerospațial.<br><span style="font-style:italic; color:#bbb;">— Fondatorii</span></p>
+    </div>
+  </section>
+
+  <section class="parteneri" style="margin-top:36px;">
+    <div class="blurred-bg">
+      <h2 style="color:#457b9d; margin-bottom:18px;">Parteneri/Sponsori</h2>
+      <div style="display:flex; flex-wrap:wrap; gap:48px; align-items:center; justify-content:center; margin-bottom:18px;">
+        <div style="text-align:center;">
+          <img src="../assets/Sponsori/Rospin.avif" alt="Rospin" style="height:70px; margin-bottom:8px; display:block; margin-left:auto; margin-right:auto;">
+          <div style="font-size:15px; color:#fff;">Rospin</div>
+        </div>
+        <div style="text-align:center;">
+          <img src="../assets/Sponsori/UBBFizica.avif" alt="UBB Fizica" style="height:70px; margin-bottom:8px; display:block; margin-left:auto; margin-right:auto;">
+          <div style="font-size:15px; color:#fff;">UBB Fizică</div>
+        </div>
+        <div style="text-align:center;">
+          <img src="../assets/Sponsori/ASFUBB.avif" alt="ASF UBB" style="height:70px; margin-bottom:8px; display:block; margin-left:auto; margin-right:auto;">
+          <div style="font-size:15px; color:#fff;">ASF UBB</div>
+        </div>
+        <div style="text-align:center;">
+          <img src="../assets/Sponsori/carfilogo.avif" alt="Carfil" style="height:70px; margin-bottom:8px; display:block; margin-left:auto; margin-right:auto;">
+          <div style="font-size:15px; color:#fff;">Carfil</div>
+        </div>
+        <div style="text-align:center;">
+          <img src="../assets/Sponsori/Microcip.avif" alt="Microchip" style="height:70px; margin-bottom:8px; display:block; margin-left:auto; margin-right:auto;">
+          <div style="font-size:15px; color:#fff;">Microchip</div>
+        </div>
+      </div>
+      <p style="text-align:center; color:#bbb; font-size:15px;">Mulțumim partenerilor pentru sprijin și colaborare!</p>
+    </div>
+  </section>
+
+  <!-- Galerie section -->
+  <section class="gallery" style="margin-top:36px;">
+    <div class="blurred-bg">
+      <h2 style="color:#e63946; margin-bottom:18px;">Galerie</h2>
+      <div class="gallery-grid">
+        <img src="../assets/Galerie/DSCF5552.avif" alt="DSCF5552">
+        <img src="../assets/Galerie/DSCF6788.avif" alt="DSCF6788">
+        <img src="../assets/Galerie/DSCF6809.avif" alt="DSCF6809">
+        <img src="../assets/Galerie/_FVN6988 (1).avif" alt="FVN6988">
+        <img src="../assets/Galerie/_FVN7125 (3).avif" alt="FVN7125">
+        <img src="../assets/Galerie/_FVN8202.avif " alt="FVN8202">
+        <img src="../assets/Galerie/_FVN8215.avif" alt="FVN8215">
+        <img src="../assets/Galerie/_FVN8247.avif" alt="FVN8247">
+        <img src="../assets/Galerie/_FVN8289.avif" alt="FVN8289">
+        <img src="../assets/Galerie/_FVN8309.avif" alt="FVN8309">
+        <img src="../assets/Galerie/IMG-20250208-WA0041.avif" alt="IMG-20250208-WA0041">
+      </div>
+    </div>
+  </section>
+</section>
+
+<section id="projects" class="page">
+  <div class="projects-grid">
+    <div class="project-card">
+      <h2>ONG</h2>
+      <p>Suntem într-un punct în care procesul de înființare a ONG-ului este aproape gata, mai lipsesc doar pașii formali finali. <span class="readmore-cut"></span>Direcția a venit natural pe măsură ce proiectele au crescut și au avut nevoie de un cadru mai structurat și stabil. Statutul de ONG ne permite să lucrăm organizat, cu obiective și responsabilități clare, și ne oferă credibilitate în discuțiile cu parteneri, sponsori și instituții. Pentru echipă, este un pas firesc care consolidează ce am construit și ne ajută să mergem spre impact pe termen lung.</p>
+    </div>
+
+    <div class="project-card euroc-2026">
+      <h2>EuRoC 2026</h2>
+      <div class="project-details">
+        <img src="../assets/images/pilot.avif" alt="Pilot 1" class="pilot-side-img">
+        <div class="project-text">
+          <p>Privind spre EuRoC 2026, proiectul va suferi modificări importante, adaptate cerințelor de misiune și competiție. Cea mai mare schimbare: trecerea de la conceptul de propulsie lichidă la un sistem cu combustibil solid, alegere dictată de simplitatea de producție, fiabilitate și integrare mai ușoară în resursele și calendarul echipei.</p>
+          <p>Noul prototip, Pilot 1, va fi demonstrator dedicat acestor upgrade-uri, cu obiectiv de zbor la 10.000 m pentru a valida performanța propulsiei și designul structural în condiții relevante EuRoC.</p>
+          <p>Pentru recuperare și analiză post-zbor, Pilot 1 va include un sistem activ de recuperare bazat pe <span class="readmore-cut"></span>parașută, gândit să asigure recuperare cu daune minime și să permită inspecții/iterări. Recuperarea este crucială pentru testare experimentală, permițând dezvoltare iterativă.</p>
+          <p>Instrumentația la bord va include senzori de temperatură și un modul GPS, pentru monitorizare în timp real sau post-zbor a stării termice și a traiectoriei. Datele validează simulările, îmbunătățesc managementul termic și rafinează designul.</p>
+          <p>Dezvoltarea, producția și testele la sol pentru propulsorul solid sunt programate să se încheie până la final de februarie, lăsând timp pentru integrare, teste de foc static și verificări de ansamblu înainte de zbor.</p>
+          <p>O îmbunătățire cheie este bay-ul avionics modular pentru reconfigurare rapidă: adăugare/schimbare de senzori, update de flight computer sau testare de algoritmi de recuperare fără modificări majore de structură. Combinate cu telemetrie/logging îmbunătățite, aceste opțiuni transformă Pilot 1 într-o platformă flexibilă, nu un vehicul single-use, susținând învățare continuă și optimizare a performanței spre EuRoC 2026.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <h2 style="color: #e63946; text-shadow: 0 2px 4px rgba(0,0,0,0.5);">EuRoC 2025</h2>
+      <div class="project-details">
+        <img src="../assets/images/Euroc251.avif" alt="EuRoC 2025" style="float:right;max-width:440px;width:80%;height:auto;margin:0 0 12px 24px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+        <p>Descriem proiectul ca pe un design structural și geometric al unui vehicul de lansare la scară mică, dezvoltat ca model CAD 3D în SolidWorks. Focusul este pe un corp cilindric destinat aplicațiilor educaționale sau experimentale. Abordarea pune accent pe acuratețe dimensională, ușurință la fabricație și compatibilitate cu interfețe standardizate pentru sarcini utile.</p>
+        <p>Geometria se bazează pe o structură cilindrică simetrică axial, cu diametru extern constant pe aproape toată lungimea. <span class="readmore-cut"></span>Această alegere susține stabilitatea aerodinamică la urcare și reduce rezistența, evitând variații bruște de secțiune.</p>
+        <p>Intern, corpul rachetei este dimensionat pentru a găzdui un ansamblu modular de payload, păstrând grosimi suficiente ale pereților pentru rigiditate structurală. Raportul volum intern/diametru extern echilibrează capacitatea de încărcare cu rezistența mecanică, astfel încât structura să suporte sarcini axiale, vibrații și solicitări de scurtă durată din timpul lansării.</p>
+        <p>Modelul SolidWorks include multiple vederi ortogonale și o secțiune care evidențiază grosimea pereților, toleranțele și zonele de interfață. O vedere detaliată scoate în evidență zone critice, precum umerii interiori sau punctele de prindere ale payload-ului, unde precizia dimensională este esențială.</p>
+        <p>Toate dimensiunile sunt cotate cu toleranțe coerente pentru a permite producția repetabilă. Utilizarea toleranțelor zecimale explicite reduce riscul de erori la prelucrare sau printare 3D și menține alinierea corectă între corp și subsisteme.</p>
+        <p>Nu este setat un material unic, dar geometria este compatibilă cu aliaje de aluminiu, tuburi compozite sau polimeri rezistenți. Secțiunea constantă și lipsa elementelor complicate fac piesa potrivită atât pentru prelucrare subtractivă, cât și pentru fabricație aditivă. Finisajul poate fi adaptat ulterior pentru nevoi aerodinamice sau structurale.</p>
+        <p>Din perspectiva integrării sistemelor, corpul acționează ca element portant principal. Dimensiunile interne permit montarea modulară a avionicei, a payload-ului și a mecanismelor de recuperare fără structuri secundare masive. Forma cilindrică susține stivuirea concentrică a componentelor, distribuind uniform sarcinile pe axa longitudinală.</p>
+        <p>Lipsa protuberanțelor externe minimizează perturbațiile aerodinamice și riscul de încărcări asimetrice în zbor — aspect critic la vehiculele mici. Distribuția centralizată a maselor și geometria uniformă contribuie la un comportament structural previzibil.</p>
+        <p>Documentația urmează practici standard de desen tehnic: scări clare, proiecții și definire completă a cotelor. Acest lucru permite interpretare neechivocă de către producție sau colaboratori, evitând scalări manuale și erori de transcriere.</p>
+        <p>Funcțional, corpul protejează și servește drept element portant. În ascensiune suportă compresie axială din propulsie și momente de încovoiere generate de forțe aerodinamice. Layout-ul intern susține și o separare sigură a payload-ului, fără interferență cu structura în fazele critice ale misiunii.</p>
+        <p>Per ansamblu, proiectul definește o geometrie eficientă și coerentă pentru misiuni aerospațiale la scară mică. Controlul atent al dimensiunilor, toleranțelor și formei oferă un echilibru între simplitate, funcționalitate și adaptabilitate, reprezentând o bază solidă pentru experimente și integrare fiabilă a sarcinilor utile.</p>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <h2>CanSat 2024</h2>
+      <p>Dezvoltare, telemetrie și campanie de zbor CanSat 2024.</p>
+      <div class="project-details">
+        <img src="../assets/images/CanSat.avif" alt="CanSat 2024" class="cansat-float-img">
+        <p>Acest proiect prezintă designul, dezvoltarea și testarea unui sistem modular de colectare a datelor atmosferice, bazat pe CanSat, realizat pentru Romanian CanSat and Rocketry Competition. Sistemul propune o arhitectură multi-probă neconvențională, compusă dintr-un carrier CanSat principal și trei sub-probe autonome cu coborâre lentă (disk probes). Misiunea urmărește să îmbunătățească rezoluția spațială a măsurătorilor atmosferice dispersând mai multe unități de senzori pe un volum definit de spațiu aerian în timpul coborârii.</p>
+        <p>Obiectivul științific principal este colectarea de date de mediu privind presiunea atmosferică, temperatura și concentrația de poluanți pe o regiune tridimensională. Spre deosebire de misiunile CanSat tradiționale care folosesc un singur vehicul, acest sistem lansează mai multe sub-probe pentru a permite analiză vectorială a parametrilor atmosferici. Corelând măsurători simultane de la probe spațial separate, sistemul facilitează reconstrucția gradientelor de presiune, diferențialelor de temperatură și vectorilor de flux ai poluanților, cu aplicații în monitorizare de mediu, modelare meteorologică și survey atmosferic low-cost.<span class="readmore-cut"></span></p>
+        <p>Arhitectura mecanică include un container principal ușor din aluminiu care adăpostește trei sub-probe disc fabricate preponderent din PLA biodegradabil prin fabricație aditivă. Designul prioritizează masa redusă, stivuirea compactă și o desfășurare fiabilă. În timpul lansării, discurile sunt stivuite concentric în tubul principal, iar după apogeu, un mecanism cu arc cu întârziere le ejectează în cădere liberă.</p>
+        <p>Fiecare disc integrează o aripă deployable acționată de arc, proiectată ca un profil biconvex ușor asimetric. La eliberarea din tub, aripa se deschide automat și transformă căderea verticală într-o autorotație controlată, reducând viteza terminală și stabilizând coborârea. Căderea lentă și rotativă extinde timpul de achiziție a datelor și dispersia spațială.</p>
+        <p>Fiecare disc funcționează ca unitate independentă de senzori și comunicație. Electronica este centrată pe un microcontroler Arduino Pro Mini care gestionează achiziția, procesarea și transmiterea datelor. Măsurarea se face cu senzor BMP280 (temperatură/presiune) și MQ135 (calitate aer, ex. CO2). Modulul GPS NEO-6M furnizează poziția, permițând reconstrucția traiectoriilor și corelarea spațială a măsurătorilor.</p>
+        <p>Comunicarea wireless între probe și stația de sol se face prin transceivere HC-12 la 433 MHz. Fiecare probă transmite pachete la intervale de 5 secunde pe un canal dedicat pentru a evita interferențele. Alimentarea este asigurată de acumulatori Li-ion individuali, dimensionați pentru funcționare extinsă peste durata așteptată a coborârii.</p>
+
+        <p>Software-ul embedded se ocupă de interogarea senzorilor, formatarea datelor și transmisia serială prin RF. Achiziția se face în timp real, cu stocare temporară onboard și transmitere periodică la sol. Echipamentul de sol constă în mai multe receivere conectate la computere care loghează fluxurile de date pentru agregare și analiză ulterioară. Această recepție distribuită susține filosofia multi-probă și asigură redundanță.</p>
+
+        <strong>Metodologie de testare și validare</strong>
+        <p>Validarea a implicat teste mecanice și electronice extinse. Testele mecanice au vizat fiabilitatea desfășurării, stabilizarea la coborâre și integritatea structurală la impact. S-au realizat drop tests controlate de ~20 m pentru a evalua sincronizarea aripii și vitezele de coborâre (țintă 6–12 m/s). Testele electronice au verificat acuratețea senzorilor, fiabilitatea transmisiei RF până la 1 km și robustețea sistemului pe baterie.</p>
+
+        <p>Rezultatele au arătat fiabilitate ridicată pentru subsistemele electronice și de comunicație, cu date aliniate la surse meteo de referință și rate de pierdere a pachetelor în limite acceptabile. Testarea mecanică a ghidat iterații de design, conducând la arhitectura finală a discurilor optimizată pentru stabilitate și supraviețuire.</p>
+
+        <strong>Concluzie</strong>
+        <p>Sistemul CanSat multi-probă propus oferă o abordare scalabilă și rentabilă pentru colectarea datelor atmosferice. Folosind probe cu coborâre lentă distribuite spațial, proiectul extinde capabilitățile analitice ale misiunilor CanSat tradiționale și demonstrează fezabilitatea unei măsurări vectoriale a mediului în condiții severe de constrângere de volum și masă.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="technical" class="page">
+  <div class="tech-docs-stack">
+
+    <div id="euroc2026-msg" class="tech-docs">
+      <h3 class="tech-doc-heading">EuRoC 2026</h3>
+      <div class="tech-doc-grid">
+        <article class="tech-doc-card">
+          <div class="tech-doc-meta">
+            <span class="doc-badge">TBD</span>
+            <span class="doc-name">Documentație</span>
+          </div>
+          <div class="tech-doc-actions">
+            <button class="doc-btn" disabled aria-disabled="true">În curând</button>
+          </div>
+        </article>
+        <article class="tech-doc-card">
+          <div class="tech-doc-meta">
+            <span class="doc-badge">TBD</span>
+            <span class="doc-name">Documentație</span>
+          </div>
+          <div class="tech-doc-actions">
+            <button class="doc-btn" disabled aria-disabled="true">În curând</button>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <div id="euroc2025-pdf-list" class="tech-docs">
+      <h3 class="tech-doc-heading">EuRoC 2025</h3>
+      <div class="tech-doc-grid">
+        <article class="tech-doc-card">
+          <div class="tech-doc-meta">
+            <span class="doc-badge">PDF</span>
+            <span class="doc-name">SolidWorks Model</span>
+          </div>
+          <div class="tech-doc-actions">
+            <button class="doc-btn" onclick="window.open('../assets/pdfs/EuRoC 2025/SolidWorks Model.pdf', '_blank')">Deschide PDF</button>
+          </div>
+        </article>
+        <article class="tech-doc-card">
+          <div class="tech-doc-meta">
+            <span class="doc-badge">PDF</span>
+            <span class="doc-name">Rocket Simulation</span>
+          </div>
+          <div class="tech-doc-actions">
+            <button class="doc-btn" onclick="window.open('../assets/pdfs/EuRoC 2025/Rocket Simulation.pdf', '_blank')">Deschide PDF</button>
+          </div>
+        </article>
+        <article class="tech-doc-card">
+          <div class="tech-doc-meta">
+            <span class="doc-badge">PDF</span>
+            <span class="doc-name">Propulsion &amp; Trajectory</span>
+          </div>
+          <div class="tech-doc-actions">
+            <button class="doc-btn" onclick="window.open('../assets/pdfs/EuRoC 2025/Rocket propulsion and trajectory model.pdf', '_blank')">Deschide PDF</button>
+          </div>
+        </article>
+        <article class="tech-doc-card">
+          <div class="tech-doc-meta">
+            <span class="doc-badge">PDF</span>
+            <span class="doc-name">Preliminary Propulsion</span>
+          </div>
+          <div class="tech-doc-actions">
+            <button class="doc-btn" onclick="window.open('../assets/pdfs/EuRoC 2025/Preliminary Propulsion Report.pdf', '_blank')">Deschide PDF</button>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <div id="cansat-pdf-list" class="tech-docs">
+      <h3 class="tech-doc-heading">CanSat 2024 &amp; 2023</h3>
+      <div class="tech-doc-grid">
+        <article class="tech-doc-card">
+          <div class="tech-doc-meta">
+            <span class="doc-badge">PDF</span>
+            <span class="doc-name">HANDDRAWN2024</span>
+          </div>
+          <div class="tech-doc-actions">
+            <button class="doc-btn" onclick="window.open('../assets/pdfs/CanSat 2024 &amp; 2023/HANDDRAWN2024.pdf', '_blank')">Deschide PDF</button>
+          </div>
+        </article>
+        <article class="tech-doc-card">
+          <div class="tech-doc-meta">
+            <span class="doc-badge">PDF</span>
+            <span class="doc-name">PDR2024first</span>
+          </div>
+          <div class="tech-doc-actions">
+            <button class="doc-btn" onclick="window.open('../assets/pdfs/CanSat 2024 &amp; 2023/PDR2024first.pdf', '_blank')">Deschide PDF</button>
+          </div>
+        </article>
+        <article class="tech-doc-card">
+          <div class="tech-doc-meta">
+            <span class="doc-badge">PDF</span>
+            <span class="doc-name">PDR2024final</span>
+          </div>
+          <div class="tech-doc-actions">
+            <button class="doc-btn" onclick="window.open('../assets/pdfs/CanSat 2024 &amp; 2023/PDR2024final.pdf', '_blank')">Deschide PDF</button>
+          </div>
+        </article>
+        <article class="tech-doc-card">
+          <div class="tech-doc-meta">
+            <span class="doc-badge">PDF</span>
+            <span class="doc-name">PDR2023first</span>
+          </div>
+          <div class="tech-doc-actions">
+            <button class="doc-btn" onclick="window.open('../assets/pdfs/CanSat 2024 &amp; 2023/PDR2023first.pdf', '_blank')">Deschide PDF</button>
+          </div>
+        </article>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="about" class="page">
+  <div class="team-container">
+
+    <div class="team-group">
+      <h2>Mentori</h2>
+      <ul class="team-list mentors">
+        <li class="team-card" style="position: relative; flex-direction: column; align-items: center; padding: 24px 20px;">
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 12px; flex: 0 0 auto;">
+            <img src="../assets/Membri/RaduH.avif" alt="Radu Hațegan" style="width: 180px; height: 180px; border-radius: 8px; object-fit: cover;">
+          </div>
+          <div class="profile" style="text-align: center; width: 100%; padding: 16px 0 0 0;">
+            <h3 style="margin-bottom: 8px;">Radu Hațegan</h3>
+            <p class="role" style="margin-bottom: 8px;">Mentor</p>
+            <p class="bio" style="margin-bottom: 12px;">Știința materialelor</p>
+          </div>
+        </li>
+        <li class="team-card" style="position: relative; flex-direction: column; align-items: center; padding: 24px 20px;">
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 12px; flex: 0 0 auto;">
+            <img src="../assets/Mentori/AlexMuresean.avif" alt="Alex Muresean" style="width: 180px; height: 180px; border-radius: 8px; object-fit: cover;">
+          </div>
+          <div class="profile" style="text-align: center; width: 100%; padding: 16px 0 0 0;">
+            <h3 style="margin-bottom: 8px;">Alex Muresean</h3>
+            <p class="role" style="margin-bottom: 8px;">Mentor</p>
+            <p class="bio" style="margin-bottom: 12px;">Analiză</p>
+          </div>
+        </li>
+        <li class="team-card" style="position: relative; flex-direction: column; align-items: center; padding: 24px 20px;">
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 12px; flex: 0 0 auto;">
+            <img src="../assets/Mentori/Razvan.avif" alt="Hirian Răzvan" style="width: 180px; height: 180px; border-radius: 8px; object-fit: cover;">
+          </div>
+          <div class="profile" style="text-align: center; width: 100%; padding: 16px 0 0 0;">
+            <h3 style="margin-bottom: 8px;">Hirian Razvan</h3>
+            <p class="role" style="margin-bottom: 8px;">Mentor</p>
+            <p class="bio" style="margin-bottom: 12px;">Știința materialelor</p>
+          </div>
+        </li>
+        <li class="team-card" style="position: relative; flex-direction: column; align-items: center; padding: 24px 20px;">
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 12px; flex: 0 0 auto;">
+            <img src="../assets/Membri/BustihanAlin.avif" alt="Alin Bustihan" style="width: 180px; height: 180px; border-radius: 8px; object-fit: cover;">
+          </div>
+          <div class="profile" style="text-align: center; width: 100%; padding: 16px 0 0 0;">
+            <h3 style="margin-bottom: 8px;">Alin Bustihan</h3>
+            <p class="role" style="margin-bottom: 8px;">Mentor</p>
+            <p class="bio" style="margin-bottom: 12px;">Producție aditivă</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="team-group">
+      <h2>Lideri de echipă</h2>
+      <ul class="team-list leaders">
+        <li class="team-card" style="position: relative; flex-direction: column; align-items: center; padding: 24px 20px;">
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 12px; flex: 0 0 auto;">
+            <img src="../assets/Membri/Lucas.avif" alt="Lucas Toma" style="width: 180px; height: 180px; border-radius: 8px; object-fit: cover;">
+          </div>
+          <div class="profile" style="text-align: center; width: 100%; padding: 16px 0 12px 0; min-height: 220px; display: flex; flex-direction: column; align-items: center;">
+            <h3 style="margin-bottom: 8px;">Lucas Toma</h3>
+            <p class="role" style="margin-bottom: 8px; font-weight: bold; color: #e63946;">Lider proiect</p>
+            <p class="bio" style="margin-bottom: 12px;">Student anul 4, Facultatea de Fizică, Inginerie Fizică</p>
+            <a href="https://www.linkedin.com/in/lucasdantoma/" target="_blank" rel="noopener" style="display: inline-block; margin-top: auto; padding: 8px 16px; background-color: #0a66c2; color: #fff; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: 500;">LinkedIn</a>
+          </div>
+        </li>
+        <li class="team-card" style="position: relative; flex-direction: column; align-items: center; padding: 24px 20px;">
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 12px; flex: 0 0 auto;">
+            <img src="../assets/Membri/Catalin.avif" alt="Cătălin Ardelean" style="width: 180px; height: 180px; border-radius: 8px; object-fit: cover;">
+          </div>
+          <div class="profile" style="text-align: center; width: 100%; padding: 16px 0 12px 0; min-height: 220px; display: flex; flex-direction: column; align-items: center;">
+            <h3 style="margin-bottom: 8px;">Cătălin Ardelean</h3>
+            <p class="role" style="margin-bottom: 8px; font-weight: bold; color: #e63946;">Lider tehnic</p>
+            <p class="bio" style="margin-bottom: 12px;">Facultatea de Fizică, Informatică-Fizică și Inginerie Fizică.</p>
+            <a href="https://www.linkedin.com/in/c%C4%83t%C4%83lin-ardelean-692020310/" target="_blank" rel="noopener" style="display: inline-block; margin-top: auto; padding: 8px 16px; background-color: #0a66c2; color: #fff; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: 500;">LinkedIn</a>
+          </div>
+        </li>
+        <li class="team-card" style="position: relative; flex-direction: column; align-items: center; padding: 24px 20px;">
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 12px; flex: 0 0 auto;">
+            <img src="../assets/Membri/Dragos.avif" alt="Dragos Pintilei" style="width: 180px; height: 180px; border-radius: 8px; object-fit: cover;">
+          </div>
+          <div class="profile" style="text-align: center; width: 100%; padding: 16px 0 12px 0; min-height: 220px; display: flex; flex-direction: column; align-items: center;">
+            <h3 style="margin-bottom: 8px;">Dragoș Pintilei</h3>
+            <p class="role" style="margin-bottom: 8px; font-weight: bold; color: #e63946;">Lider electronică(Pauză)</p>
+            <p class="bio" style="margin-bottom: 12px;">Student anul 4, Facultatea de Fizică, Inginerie Fizică</p>
+            <a href="https://www.linkedin.com/in/pintilei-dragos-aa355220b/" target="_blank" rel="noopener" style="display: inline-block; margin-top: auto; padding: 8px 16px; background-color: #0a66c2; color: #fff; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: 500;">LinkedIn</a>
+          </div>
+        </li>
+        <li class="team-card" style="position: relative; flex-direction: column; align-items: center; padding: 24px 20px;">
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 12px; flex: 0 0 auto;">
+            <img src="../assets/Membri/Tory.avif" alt="Teodor Dinu" style="width: 180px; height: 180px; border-radius: 8px; object-fit: cover;">
+          </div>
+          <div class="profile" style="text-align: center; width: 100%; padding: 16px 0 12px 0; min-height: 220px; display: flex; flex-direction: column; align-items: center;">
+            <h3 style="margin-bottom: 8px;">Teodor Dinu</h3>
+            <p class="role" style="margin-bottom: 8px; font-weight: bold; color: #e63946;">Lider materiale</p>
+            <p class="bio" style="margin-bottom: 12px;">Absolvent al Facultății de Fizică, Inginerie Fizică</p>
+            <a href="https://www.linkedin.com/in/teodor-gabriel-dinu-63a707357/" target="_blank" rel="noopener" style="display: inline-block; margin-top: auto; padding: 8px 16px; background-color: #0a66c2; color: #fff; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: 500;">LinkedIn</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="team-group">
+      <h2>Membri activi</h2>
+      <ul class="team-list active-members">
+        <li class="team-card" style="position: relative; flex-direction: column; align-items: center; padding: 24px 20px;">
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 12px; flex: 0 0 auto;">
+            <img src="../assets/Membri/RaulS.avif" alt="Raul Simonca" style="width: 180px; height: 180px; border-radius: 8px; object-fit: cover;">
+          </div>
+          <div class="profile" style="text-align: center; width: 100%; padding: 16px 0 0 0;">
+            <h3 style="margin-bottom: 8px;">Raul Simonca</h3>
+            <p class="bio" style="margin-bottom: 12px;">Lider Electronice și Incarcare</p>
+            <a href="https://www.linkedin.com/in/raul-simonca-a65858277/" target="_blank" rel="noopener" style="display: inline-block; margin-top: auto; padding: 8px 16px; background-color: #0a66c2; color: #fff; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: 500;">LinkedIn</a>
+          </div>
+        </li>
+        <li class="team-card" style="position: relative; flex-direction: column; align-items: center; padding: 24px 20px;">
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 12px; flex: 0 0 auto;">
+            <img src="../assets/Membri/SerbanR.avif" alt="Rotariu, Serban" style="width: 180px; height: 180px; border-radius: 8px; object-fit: cover;">
+          </div>
+          <div class="profile" style="text-align: center; width: 100%; padding: 16px 0 0 0;">
+            <h3 style="margin-bottom: 8px;">Rotariu Serban</h3>
+            <p class="bio" style="margin-bottom: 12px;">Lider Propulsie</p>
+          </div>
+        </li>
+        <li class="team-card" style="position: relative; flex-direction: column; align-items: center; padding: 24px 20px;">
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 12px; flex: 0 0 auto;">
+            <img src="../assets/Membri/RaresBota.avif" alt="Bota Rares" style="width: 180px; height: 180px; border-radius: 8px; object-fit: cover;">
+          </div>
+          <div class="profile" style="text-align: center; width: 100%; padding: 16px 0 0 0;">
+            <h3 style="margin-bottom: 8px;">Bota Rares</h3>
+            <p class="bio" style="margin-bottom: 12px;">Analitică</p>
+          </div>
+        </li>
+        <li class="team-card" style="position: relative; flex-direction: column; align-items: center; padding: 24px 20px;">
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 12px; flex: 0 0 auto;">
+            <img src="../assets/Membri/Ovidiu.avif" alt="Ovidiu Agarbicean" style="width: 180px; height: 180px; border-radius: 8px; object-fit: cover;">
+          </div>
+          <div class="profile" style="text-align: center; width: 100%; padding: 16px 0 0 0;">
+            <h3 style="margin-bottom: 8px;">Ovidiu Agarbicean</h3>
+            <p class="bio" style="margin-bottom: 12px;">Sisteme de Propulsie</p>
+          </div>
+        </li>
+        <li class="team-card" style="position: relative; flex-direction: column; align-items: center; padding: 24px 20px;">
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 12px; flex: 0 0 auto;">
+            <img src="../assets/Membri/Iza.avif" alt="Izabela Tivadar" style="width: 180px; height: 180px; border-radius: 8px; object-fit: cover;">
+          </div>
+          <div class="profile" style="text-align: center; width: 100%; padding: 16px 0 0 0;">
+            <h3 style="margin-bottom: 8px;">Izabela Tivadar</h3>
+            <p class="bio" style="margin-bottom: 12px;">Logistică și Direcție Artistică</p>
+          </div>
+        </li>
+        <li class="team-card" style="position: relative; flex-direction: column; align-items: center; padding: 24px 20px;">
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 12px; flex: 0 0 auto;">
+            <img src="../assets/Membri/AndreeaP.avif" alt="Furdui Andreea" style="width: 180px; height: 180px; border-radius: 8px; object-fit: cover;">
+          </div>
+          <div class="profile" style="text-align: center; width: 100%; padding: 16px 0 0 0;">
+            <h3 style="margin-bottom: 8px;">Furdui Andreea</h3>
+            <p class="bio" style="margin-bottom: 12px;">Sisteme de Propulsie</p>
+          </div>
+        </li>
+        <li class="team-card" style="position: relative; flex-direction: column; align-items: center; padding: 24px 20px;">
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 12px; flex: 0 0 auto;">
+            <img src="../assets/Membri/Flopy.avif" alt="Budiu Flavius" style="width: 180px; height: 180px; border-radius: 8px; object-fit: cover;">
+          </div>
+          <div class="profile" style="text-align: center; width: 100%; padding: 16px 0 0 0;">
+            <h3 style="margin-bottom: 8px;">Budiu Flavius</h3>
+            <p class="bio" style="margin-bottom: 12px;">Materiale și CAD</p>
+          </div>
+        </li>
+        <li class="team-card" style="position: relative; flex-direction: column; align-items: center; padding: 24px 20px;">
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 12px; flex: 0 0 auto;">
+            <img src="../assets/Membri/RoxanaG.avif" alt="Giurgiu Roxana" style="width: 180px; height: 180px; border-radius: 8px; object-fit: cover;">
+          </div>
+          <div class="profile" style="text-align: center; width: 100%; padding: 16px 0 0 0;">
+            <h3 style="margin-bottom: 8px;">Giurgiu Roxana</h3>
+            <p class="bio" style="margin-bottom: 12px;">Propulsie</p>
+          </div>
+        </li>
+        <li class="team-card" style="position: relative; flex-direction: column; align-items: center; padding: 24px 20px;">
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 12px; flex: 0 0 auto;">
+            <img src="../assets/Membri/OnicaNicolae.avif" alt="Onica Nicolae" style="width: 180px; height: 180px; border-radius: 8px; object-fit: cover;">
+          </div>
+          <div class="profile" style="text-align: center; width: 100%; padding: 16px 0 0 0;">
+            <h3 style="margin-bottom: 8px;">Onica Nicolae</h3>
+            <p class="bio" style="margin-bottom: 12px;">Materiale și CAD</p>
+          </div>
+        </li>
+        <li class="team-card" style="position: relative; flex-direction: column; align-items: center; padding: 24px 20px;">
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 12px; flex: 0 0 auto;">
+            <img src="../assets/Membri/pavel.avif" alt="Ștefan Pavel" style="width: 180px; height: 180px; border-radius: 8px; object-fit: cover;">
+          </div>
+          <div class="profile" style="text-align: center; width: 100%; padding: 16px 0 0 0;">
+            <h3 style="margin-bottom: 8px;">Ștefan Pavel</h3>
+            <p class="bio" style="margin-bottom: 12px;">Electronică și Incarcare</p>
+          </div>
+        </li>
+        <li class="team-card" style="position: relative; flex-direction: column; align-items: center; padding: 24px 20px;">
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 12px; flex: 0 0 auto;">
+            <img src="../assets/Membri/Sarah.avif" alt="Sarah Maria Morușca" style="width: 180px; height: 180px; border-radius: 8px; object-fit: cover;">
+          </div>
+          <div class="profile" style="text-align: center; width: 100%; padding: 16px 0 0 0;">
+            <h3 style="margin-bottom: 8px;">Morușca Sarah</h3>
+            <p class="bio" style="margin-bottom: 12px;">Propulsie</p>
+          </div>
+        </li>
+
+        <li class="team-card" style="position: relative; flex-direction: column; align-items: center; padding: 24px 20px;">
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 12px; flex: 0 0 auto;">
+            <img src="../assets/Membri/Larisa.avif" alt="Vasiu Larisa Maria" style="width: 180px; height: 180px; border-radius: 8px; object-fit: cover;">
+          </div>
+          <div class="profile" style="text-align: center; width: 100%; padding: 16px 0 0 0;">
+            <h3 style="margin-bottom: 8px;">Vasiu Larisa Maria</h3>
+            <p class="bio" style="margin-bottom: 12px;">Mteriale și CAD</p>
+          </div>
+          
+        </li>
+      </ul>
+    </div>
+
+
+    <div class="team-group">
+      <h2>Alumni</h2>
+      <ul class="team-list alumni">
+        <li class="team-card" style="position: relative; flex-direction: column; align-items: center; padding: 24px 20px;">
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 12px; flex: 0 0 auto;">
+            <img src="../assets/Alumi/TudorUT.avif" alt="Tudor Aducesei" style="width: 180px; height: 180px; border-radius: 8px; object-fit: cover;">
+          </div>
+          <div class="profile" style="text-align: center; width: 100%; padding: 16px 0 0 0;">
+            <h3 style="margin-bottom: 8px;">Tudor Aducesei</h3>
+            <p class="role" style="margin-bottom: 8px;">Fost student</p>
+            <p class="bio" style="margin-bottom: 12px;">Fost student la Universitatea Tehnică din Cluj</p>
+          </div>
+        </li>
+        <li class="team-card" style="position: relative; flex-direction: column; align-items: center; padding: 24px 20px;">
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 12px; flex: 0 0 auto;">
+            <img src="../assets/Alumi/Stefan.avif" alt="Stefan Cojocariu" style="width: 180px; height: 180px; border-radius: 8px; object-fit: cover;">
+          </div>
+          <div class="profile" style="text-align: center; width: 100%; padding: 16px 0 0 0;">
+            <h3 style="margin-bottom: 8px;">Stefan Cojocariu</h3>
+            <p class="role" style="margin-bottom: 8px;">Alum</p>
+            <p class="bio" style="margin-bottom: 12px;">Masterand în Fizică Computațională</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<section id="changelog" class="page">
+  <div class="changelog-inner">
+
+    <div class="timeline">
+
+    <h1 class="timeline-title">Cronologia dezvoltării</h1>
+
+    <div class="timeline-entry">
+      <div class="date">12.05.2025</div>
+      <ul>
+        <li data-type="added"><span class="tag added">ADĂUGAT</span> Am deschis înscrierile de iarnă 2025 și am completat echipele de electronică și materiale.</li>
+        <li data-type="updated"><span class="tag updated">ACTUALIZAT</span> Am pornit pregătirile pentru EuRoC 2026.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-entry">
+      <div class="date">11.27.2025</div>
+      <div style="display: flex; gap: 1.5rem; align-items: flex-start;">
+        <ul style="flex: 1;">
+          <li data-type="added"><span class="tag added">ADĂUGAT</span> Comitetul de conducere a participat la TECIF 2025 (Taiwan‑Europe Chip Innovation Forum) pe 27.11.2025.</li>
+        </ul>
+        <img src="../assets/images/TECIF2025.avif" alt="TECIF 2025" style="height: 150px; width: auto; border-radius: 8px; flex-shrink: 0;">
+      </div>
+    </div>
+
+    <div class="timeline-entry">
+      <div class="date">03.15.2025</div>
+      <ul>
+        <li data-type="added"><span class="tag added">ADĂUGAT</span> Documentația preliminară EuRoC 2025 este finalizată, așteaptă review.</li>
+        <li data-type="updated"><span class="tag updated">ACTUALIZAT</span> Progres în cercetarea de propulsie împreună cu laboratorul ITIM.</li>
+        <li data-type="added"><span class="tag added">ADĂUGAT</span> Trei membri noi în echipele de electronică și materiale.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-entry">
+      <div class="date">02.27.2025</div>
+      <ul>
+        <li data-type="added"><span class="tag added">ADĂUGAT</span> Documentația de cercetare pentru propulsie cu simulări și modele teoretice.</li>
+        <li data-type="updated"><span class="tag updated">ACTUALIZAT</span> Site-ul cu secțiune de documentație tehnică.</li>
+        <li data-type="fixed"><span class="tag fixed">REZOLVAT</span> Corecții în aplicația EuRoC după review tehnic.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-entry">
+      <div class="date">01.12.2025</div>
+      <ul>
+        <li><span class="tag added">ADĂUGAT</span> Draft pentru documentația preliminară EuRoC 2025.</li>
+        <li><span class="tag updated">ACTUALIZAT</span> Acord de parteneriat cu laboratorul de fizică Ion Ursu finalizat.</li>
+        <li><span class="tag added">ADĂUGAT</span> Cercetare inițială pe motor solid.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-entry">
+      <div class="date">11.30.2024</div>
+      <div style="display: flex; gap: 1.5rem; align-items: flex-start;">
+        <ul style="flex: 1;">
+          <li><span class="tag added">ADĂUGAT</span> Decizia de a participa la EuRoC 2025.</li>
+          <li><span class="tag updated">ACTUALIZAT</span> Structura echipei cu noi divizii de cercetare.</li>
+          <li><span class="tag fixed">REZOLVAT</span> Revizii finale ale arhivei CanSat 2024.</li>
+        </ul>
+        <img src="../assets/images/intalnire.avif" alt="Întâlnire de echipă" style="height: 150px; width: auto; border-radius: 8px; flex-shrink: 0;">
+      </div>
+    </div>
+
+    <div class="timeline-entry">
+      <div class="date">03.30.2024</div>
+      <div style="display: flex; gap: 1.5rem; align-items: flex-start;">
+        <ul style="flex: 1;">
+          <li><span class="tag added">ADĂUGAT</span> CanSat 2024 finalizat – locul 2.</li>
+          <li><span class="tag updated">ACTUALIZAT</span> Raport tehnic final și documentație trimise.</li>
+          <li><span class="tag added">ADĂUGAT</span> Discuții de parteneriat cu laboratorul ITIM.</li>
+        </ul>
+        <img src="../assets/images/CanSatB.avif" alt="CanSat 2024" style="height: 150px; width: auto; border-radius: 8px; flex-shrink: 0;">
+      </div>
+    </div>
+
+    <div class="timeline-entry">
+      <div class="date">02.15.2024</div>
+      <ul>
+        <li><span class="tag added">ADĂUGAT</span> Scheme electrice finalizate pentru CanSat 2024.</li>
+        <li><span class="tag updated">ACTUALIZAT</span> Integrare senzori și optimizare consum.</li>
+        <li><span class="tag fixed">REZOLVAT</span> Probleme de comunicație din designul 2023.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-entry">
+      <div class="date">11.22.2023</div>
+      <ul>
+        <li><span class="tag added">ADĂUGAT</span> Raport tehnic final CanSat 2023 transmis.</li>
+        <li><span class="tag updated">ACTUALIZAT</span> Decizia de a participa la CanSat 2024.</li>
+        <li><span class="tag added">ADĂUGAT</span> Îmbunătățiri inițiale după analiza performanței 2023.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-entry">
+      <div class="date">11.03.2023</div>
+      <ul>
+        <li><span class="tag added">ADĂUGAT</span> Scheme electrice pentru CanSat 2023 finalizate.</li>
+        <li><span class="tag updated">ACTUALIZAT</span> Echipa s-a constituit ca RedShift Aerospace.</li>
+        <li><span class="tag added">ADĂUGAT</span> CanSat 2023 complet – locul 4.</li>
+      </ul>
+    </div>
+
+  </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="page">
+  <div class="contact-container">
+
+    <div class="contact-info">
+      <h1>Contact</h1>
+
+      <p class="contact-intro">
+        Interesați de colaborare, cercetare sau inovație?
+        Scrie-ne și hai să construim ceva ambițios împreună.
+      </p>
+
+      <div class="contact-details">
+        <div>
+          <span><u>Email</u></span>
+          <a href="mailto:redshiftaero.com">redshiftaero.com</a>
+        </div>
+
+        <div>
+          <span><u>Locație</u></span>
+          <p>Cluj-Napoca, România · Europa</p>
+        </div>
+
+        <div>
+          <span><u>Social</u></span>
+          <p><br></p>
+          <p class="social-links">
+            <a href="https://www.linkedin.com/company/redshift-aerospace-industries/" target="_blank" rel="noopener"><img src="../assets/images/linkedin.svg" alt="LinkedIn" width="22" height="22"></a>
+            <a href="https://github.com/RedShiftAerospace" target="_blank" rel="noopener"><img src="../assets/images/github.svg" alt="GitHub" width="22" height="22"></a>
+            <a href="https://www.instagram.com/redshiftaero/" target="_blank" rel="noopener"><img src="../assets/images/instagram.svg" alt="Instagram" width="22" height="22"></a>
+            <a href="https://www.youtube.com/@RedshiftAerospace" target="_blank" rel="noopener"><img src="../assets/images/youtube.svg" alt="YouTube" width="22" height="22"></a>
+            <a href="https://www.facebook.com/profile.php?id=61574144896177" target="_blank" rel="noopener"><img src="../assets/images/facebook.svg" alt="Facebook" width="22" height="22"></a>
+            <a href="https://linktr.ee/redshiftaero" target="_blank" rel="noopener"><img src="../assets/images/linktree.svg" alt="Linktree" width="22" height="22"></a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <form id="contact-form-ro" action="https://formsubmit.co/redshiftaero.com" method="POST">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_subject" value="Mesaj nou de pe Site RedShift (RO)">
+
+        <input type="text" name="name" placeholder="Numele tău" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <textarea name="message" placeholder="Mesaj" required></textarea>
+
+        <label class="bot-check">
+          <input type="checkbox" name="notabot" required>
+          <span>Nu sunt bot</span>
+        </label>
+
+        <button type="submit">Trimite mesajul</button>
+        <div class="rate-limit-msg" id="rate-limit-msg-ro">Te rugăm să aștepți 10 minute între mesaje de la același email.</div>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  (function() {
+    var form = document.getElementById('contact-form-ro');
+    if (!form) return;
+    var msg = document.getElementById('rate-limit-msg-ro');
+    var LIMIT_MS = 10 * 60 * 1000;
+    form.addEventListener('submit', function(e) {
+      var emailInput = form.querySelector('input[name="email"]');
+      if (!emailInput) return;
+      var email = (emailInput.value || '').trim().toLowerCase();
+      if (!email) return;
+      var store = {};
+      try { store = JSON.parse(localStorage.getItem('contactRate') || '{}'); } catch (_) {}
+      var last = store[email] || 0;
+      var now = Date.now();
+      if (now - last < LIMIT_MS) {
+        e.preventDefault();
+        if (msg) msg.style.display = 'block';
+        return;
+      }
+      store[email] = now;
+      try { localStorage.setItem('contactRate', JSON.stringify(store)); } catch (_) {}
+      if (msg) msg.style.display = 'none';
+    });
+  })();
+</script>
+
+</main>
+<footer class="footer">
+
+  <div class="footer-container">
+
+    <div class="footer-brand">
+      <img src="../assets/images/logo.avif" alt="RedShift Logo" style="width: 300px; height: auto;">
+      <p>
+        RedShift Aerospace este o inițiativă independentă de cercetare aerospațială, axată pe inginerie, experiment și inovație aplicată.
+      </p>
+    </div>
+
+    <div class="footer-nav">
+      <a data-page="home">Acasă</a>
+      <a data-page="projects">Proiecte</a>
+      <a data-page="about">Echipă</a>
+    </div>
+
+    <div class="footer-nav">
+      <a data-page="technical">Tehnic</a>
+      <a data-page="changelog">Cronologia dezvoltării</a>
+    </div>
+
+    <div class="footer-cta">
+      <button class="cta primary" onclick="showPage('contact')">Contactează-ne</button>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <div class="footer-links">
+      <a href="../regulation.html">Regulament</a>
+    </div>
+
+    <div class="footer-copy">
+      © RedShift Aerospace 2026. Toate drepturile rezervate.
+    </div>
+  </div>
+
+</footer>
+
+<script src="../js/navigation.js"></script>
+<script src="../js/changelog.js"></script>
+
+<script>
+function setEvolutionFooterVisibility() {
+  var isChangelog = false;
+  var changelogSection = document.getElementById('changelog');
+  if (changelogSection && changelogSection.classList.contains('active')) {
+    isChangelog = true;
+  }
+  document.body.classList.toggle('evolution-active', isChangelog);
+}
+
+document.addEventListener('DOMContentLoaded', setEvolutionFooterVisibility);
+if (typeof showPage === 'function') {
+  var originalShowPage = showPage;
+  window.showPage = function(page) {
+    originalShowPage(page);
+    setEvolutionFooterVisibility();
+  };
+} else {
+  document.addEventListener('click', function(e) {
+    if (e.target.matches('[onclick*="showPage"]')) {
+      setTimeout(setEvolutionFooterVisibility, 100);
+    }
+  });
+}
+</script>
+
+</body>
+</html>

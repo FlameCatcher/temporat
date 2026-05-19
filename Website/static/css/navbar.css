@@ -1,0 +1,106 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+  background: rgba(0, 0, 0, 0.15); /* lighter transparență */
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+}
+/* Logo container */
+.logo {
+  display: flex;
+  align-items: center;
+}
+/* Logo image */
+.logo img {
+  height: 52px;
+  width: auto;
+  display: block;
+}
+
+/* clickable logo link */
+.logo-link {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.logo-link img {
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+.logo-link:hover img {
+  transform: translateY(-2px);
+  opacity: 0.95;
+}
+/* Navigation */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+/* Buttons behave like links */
+.nav-links a {
+  background: none;
+  border: none;
+  padding: 6px 8px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  color: #ffffff;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.nav-links .lang-switch {
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.nav-links .lang-switch:hover {
+  background: #e63946;
+  border-color: #e63946;
+  opacity: 1;
+}
+
+/* Mobile*/
+@media (max-width: 768px) {
+  .header {
+    padding: 0 24px;
+    height: 56px;
+  }
+  .nav-links {
+    gap: 10px;
+  }
+}
+.nav-links a {
+  position: relative;
+}
+/* hover clar */
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* feedback la click */
+.nav-links a:active {
+  transform: scale(0.96);
+}
+.header-inner {
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 24px; /* aici controlezi distanța față de margini */
+}
+
